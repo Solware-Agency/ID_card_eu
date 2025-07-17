@@ -60,7 +60,7 @@ const ContactCard: React.FC = () => {
       secondary: "bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50",
       success: "bg-green-500 hover:bg-green-600 text-white",
       social: "bg-blue-700 hover:bg-blue-800 text-white",
-      language: "bg-gray-100 hover:bg-gray-200 text-gray-600 border-0 !w-10 !h-10 !rounded-xl"
+      language: "bg-white bg-opacity-20 backdrop-blur-sm text-white hover:bg-opacity-30 border-0 !w-10 !h-10 !rounded-xl"
     };
 
     const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
@@ -128,6 +128,53 @@ const ContactCard: React.FC = () => {
     );
   };
 
+  // Filter available contact options
+  const contactOptions = [
+    {
+      icon: <Mail size={24} />,
+      href: `mailto:${employee.email}`,
+      action: 'click_email',
+      variant: 'primary' as const
+    },
+    {
+      icon: <Phone size={24} />,
+      href: `tel:${formatPhoneForCall(employee.phone)}`,
+      action: 'click_call',
+      variant: 'primary' as const
+    },
+    {
+      icon: <MessageCircle size={24} />,
+      href: `https://wa.me/${employee.whatsapp}`,
+      target: '_blank',
+      rel: 'noopener noreferrer',
+      action: 'click_whatsapp',
+      variant: 'success' as const
+    },
+    ...(employee.linkedin ? [{
+      icon: <Linkedin size={24} />,
+      href: `https://linkedin.com/in/${employee.linkedin}`,
+      target: '_blank',
+      rel: 'noopener noreferrer',
+      action: 'click_social',
+      variant: 'social' as const
+    }] : []),
+    ...(employee.website ? [{
+      icon: <Globe size={24} />,
+      href: `https://${employee.website}`,
+      target: '_blank',
+      rel: 'noopener noreferrer',
+      action: 'click_social',
+      variant: 'primary' as const
+    }] : []),
+    {
+      icon: <Download size={24} />,
+      href: `/vcf/${employee.slug}.vcf`,
+      download: true,
+      action: 'click_save_contact',
+      variant: 'secondary' as const
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
       <div className="max-w-sm w-full">
@@ -163,79 +210,22 @@ const ContactCard: React.FC = () => {
             </p>
           </div>
 
-          {/* Contact actions */}
+          {/* Contact section */}
           <div className="p-8">
-            <div className="grid grid-cols-3 gap-6 mb-8">
-              {/* Email */}
-              <IconButton
-                icon={<Mail size={24} />}
-                href={`mailto:${employee.email}`}
-                onClick={() => handleAction('click_email')}
-                variant="primary"
-              />
-
-              {/* Phone */}
-              <IconButton
-                icon={<Phone size={24} />}
-                href={`tel:${formatPhoneForCall(employee.phone)}`}
-                onClick={() => handleAction('click_call')}
-                variant="primary"
-              />
-
-              {/* WhatsApp */}
-              <IconButton
-                icon={<MessageCircle size={24} />}
-                href={`https://wa.me/${employee.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => handleAction('click_whatsapp')}
-                variant="success"
-              />
-
-              {/* LinkedIn */}
-              {employee.linkedin && (
+            {/* Icon grid */}
+            <div className="grid grid-cols-3 gap-4 mb-8">
+              {contactOptions.map((option, index) => (
                 <IconButton
-                  icon={<Linkedin size={24} />}
-                  href={`https://linkedin.com/in/${employee.linkedin}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => handleAction('click_social')}
-                  variant="social"
+                  key={index}
+                  icon={option.icon}
+                  href={option.href}
+                  target={option.target}
+                  rel={option.rel}
+                  download={option.download}
+                  onClick={() => handleAction(option.action)}
+                  variant={option.variant}
                 />
-              )}
-
-              {/* Website */}
-              {employee.website && (
-                <IconButton
-                  icon={<Globe size={24} />}
-                  href={`https://${employee.website}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => handleAction('click_social')}
-                  variant="primary"
-                />
-              )}
-
-              {/* Save contact */}
-              <IconButton
-                icon={<Download size={24} />}
-                href={`/vcf/${employee.slug}.vcf`}
-                download
-                onClick={() => handleAction('click_save_contact')}
-                variant="secondary"
-              />
-
-              {/* Schedule meeting - only show if calendly exists */}
-              {employee.calendly && (
-                <IconButton
-                  icon={<Calendar size={24} />}
-                  href={employee.calendly}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => handleAction('click_agendar')}
-                  variant="secondary"
-                />
-              )}
+              ))}
             </div>
 
             {/* Action buttons */}
