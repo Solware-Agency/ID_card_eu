@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Mail, Phone, MessageCircle, Linkedin, Globe, Calendar, Globe2 } from 'lucide-react';
+import { Mail, Phone, MessageCircle, Linkedin, Globe, Calendar, Download, Globe2 } from 'lucide-react';
 import { getEmployeeBySlug } from '../data/empleados';
-import { STRINGS } from '../i18n/strings';
 import { trackEvent } from '../utils/analytics';
 import type { Language } from '../types';
 
@@ -10,7 +9,35 @@ const ContactCard: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [language, setLanguage] = useState<Language['code']>('es');
   const employee = slug ? getEmployeeBySlug(slug) : null;
-  const strings = STRINGS[language];
+
+  const tooltips = {
+    es: {
+      email: 'Enviar correo electrónico',
+      phone: 'Llamar por teléfono',
+      whatsapp: 'Enviar mensaje por WhatsApp',
+      linkedin: 'Ver perfil de LinkedIn',
+      website: 'Visitar sitio web',
+      save: 'Guardar contacto',
+      schedule: 'Agendar reunión',
+      language: 'Cambiar idioma',
+      notFound: 'Contacto no encontrado',
+      notFoundDesc: 'El perfil solicitado no existe.'
+    },
+    en: {
+      email: 'Send email',
+      phone: 'Make phone call',
+      whatsapp: 'Send WhatsApp message',
+      linkedin: 'View LinkedIn profile',
+      website: 'Visit website',
+      save: 'Save contact',
+      schedule: 'Schedule meeting',
+      language: 'Change language',
+      notFound: 'Contact not found',
+      notFoundDesc: 'The requested profile does not exist.'
+    }
+  };
+
+  const strings = tooltips[language];
 
   useEffect(() => {
     if (employee) {
@@ -21,7 +48,7 @@ const ContactCard: React.FC = () => {
 
   if (!employee) {
     return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-4">{strings.notFound}</h1>
           <p className="text-gray-600">{strings.notFoundDesc}</p>
@@ -36,9 +63,64 @@ const ContactCard: React.FC = () => {
 
   const formatPhoneForCall = (phone: string) => phone.replace(/\s+/g, '');
 
+  const IconButton: React.FC<{
+    icon: React.ReactNode;
+    onClick?: () => void;
+    href?: string;
+    target?: string;
+    rel?: string;
+    download?: boolean;
+    className?: string;
+    tooltip: string;
+    variant?: 'primary' | 'secondary' | 'success' | 'social';
+  }> = ({ icon, onClick, href, target, rel, download, className = '', tooltip, variant = 'primary' }) => {
+    const baseClasses = "w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-200 hover:scale-105 hover:shadow-lg relative group";
+    
+    const variantClasses = {
+      primary: "bg-blue-600 hover:bg-blue-700 text-white",
+      secondary: "bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50",
+      success: "bg-green-500 hover:bg-green-600 text-white",
+      social: "bg-blue-700 hover:bg-blue-800 text-white"
+    };
+
+    const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
+
+    const content = (
+      <>
+        {icon}
+        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-10">
+          {tooltip}
+          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+        </div>
+      </>
+    );
+
+    if (href) {
+      return (
+        <a
+          href={href}
+          target={target}
+          rel={rel}
+          download={download}
+          onClick={onClick}
+          className={combinedClasses}
+        >
+          {content}
+        </a>
+      );
+    }
+
+    return (
+      <button onClick={onClick} className={combinedClasses}>
+        {content}
+      </button>
+    );
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
       <div className="max-w-sm w-full">
+        {/* Header with gradient background */}
         <div 
           className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-t-3xl h-48 relative overflow-hidden"
           style={{ background: 'linear-gradient(135deg, #0C1E5B 0%, #1e40af 100%)' }}
@@ -47,124 +129,120 @@ const ContactCard: React.FC = () => {
             <div className="text-6xl font-bold text-white transform rotate-12"></div>
           </div>
           
+          {/* Language toggle */}
           <div className="absolute top-4 right-4">
-            <button
+            <IconButton
+              icon={<Globe2 size={18} />}
               onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
-              className="flex items-center gap-1 bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm font-medium hover:bg-opacity-30 transition-all"
-            >
-              <Globe2 size={14} />
-              {language.toUpperCase()}
-            </button>
+              tooltip={strings.language}
+              className="!w-10 !h-10 !rounded-xl bg-white bg-opacity-20 backdrop-blur-sm text-white hover:bg-opacity-30 border-0"
+            />
           </div>
         </div>
 
-        <div className="bg-white rounded-b-3xl shadow-xl p-6 -mt-16 relative z-10">
-          <div className="flex flex-col items-center text-center mb-6">
-            <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg">
+        {/* Main card content */}
+        <div className="bg-white rounded-b-3xl shadow-2xl p-8 -mt-16 relative z-10">
+          {/* Profile section */}
+          <div className="flex flex-col items-center text-center mb-8">
+            <div className="w-28 h-28 rounded-full overflow-hidden mb-6 border-4 border-white shadow-xl">
               <img
                 src={employee.photo}
                 alt={employee.name}
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(employee.name)}&background=0C1E5B&color=fff&size=96`;
+                  (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(employee.name)}&background=0C1E5B&color=fff&size=112`;
                 }}
               />
             </div>
             
-            <h1 className="text-2xl font-bold text-gray-800 mb-1">{employee.name}</h1>
+            <h1 className="text-2xl font-bold text-gray-800 mb-2">{employee.name}</h1>
             <p className="text-gray-600 mb-1">{employee.title[language]}</p>
             <p className="text-blue-700 font-medium text-sm italic">{employee.company[language]}</p>
           </div>
 
-          <div className="space-y-3 mb-6">
-            <a
+          {/* Contact actions grid */}
+          <div className="grid grid-cols-3 gap-4 mb-8">
+            {/* Email */}
+            <IconButton
+              icon={<Mail size={20} />}
               href={`mailto:${employee.email}`}
               onClick={() => handleAction('click_email')}
-              className="flex items-center gap-3 p-3 bg-blue-50 rounded-xl hover:bg-blue-100 transition-colors"
-            >
-              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-                <Mail size={18} className="text-white" />
-              </div>
-              <span className="text-gray-800 font-medium">{employee.email}</span>
-            </a>
+              tooltip={strings.email}
+              variant="primary"
+            />
 
-            <a
+            {/* Phone */}
+            <IconButton
+              icon={<Phone size={20} />}
               href={`tel:${formatPhoneForCall(employee.phone)}`}
               onClick={() => handleAction('click_call')}
-              className="flex items-center gap-3 p-3 bg-blue-50 rounded-xl hover:bg-blue-100 transition-colors"
-            >
-              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-                <Phone size={18} className="text-white" />
-              </div>
-              <span className="text-gray-800 font-medium">{employee.phone}</span>
-            </a>
+              tooltip={strings.phone}
+              variant="primary"
+            />
 
-            <a
+            {/* WhatsApp */}
+            <IconButton
+              icon={<MessageCircle size={20} />}
               href={`https://wa.me/${employee.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleAction('click_whatsapp')}
-              className="flex items-center gap-3 p-3 bg-green-50 rounded-xl hover:bg-green-100 transition-colors"
-            >
-              <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                <MessageCircle size={18} className="text-white" />
-              </div>
-              <span className="text-gray-800 font-medium">WhatsApp</span>
-            </a>
+              tooltip={strings.whatsapp}
+              variant="success"
+            />
 
+            {/* LinkedIn */}
             {employee.linkedin && (
-              <a
+              <IconButton
+                icon={<Linkedin size={20} />}
                 href={`https://linkedin.com/in/${employee.linkedin}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => handleAction('click_social')}
-                className="flex items-center gap-3 p-3 bg-blue-50 rounded-xl hover:bg-blue-100 transition-colors"
-              >
-                <div className="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center">
-                  <Linkedin size={18} className="text-white" />
-                </div>
-                <span className="text-gray-800 font-medium">{employee.linkedin}</span>
-              </a>
+                tooltip={strings.linkedin}
+                variant="social"
+              />
             )}
 
+            {/* Website */}
             {employee.website && (
-              <a
+              <IconButton
+                icon={<Globe size={20} />}
                 href={`https://${employee.website}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => handleAction('click_social')}
-                className="flex items-center gap-3 p-3 bg-blue-50 rounded-xl hover:bg-blue-100 transition-colors"
-              >
-                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-                  <Globe size={18} className="text-white" />
-                </div>
-                <span className="text-gray-800 font-medium">{employee.website}</span>
-              </a>
+                tooltip={strings.website}
+                variant="primary"
+              />
             )}
           </div>
 
-          <div className="space-y-3">
-            <a
+          {/* Primary actions */}
+          <div className="flex gap-4 justify-center">
+            {/* Save contact */}
+            <IconButton
+              icon={<Download size={22} />}
               href={`/vcf/${employee.slug}.vcf`}
               download
               onClick={() => handleAction('click_save_contact')}
-              className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl text-center transition-colors"
-              style={{ backgroundColor: '#0C1E5B' }}
-            >
-              {strings.save}
-            </a>
+              tooltip={strings.save}
+              variant="secondary"
+              className="!w-16 !h-16"
+            />
 
+            {/* Schedule meeting */}
             {employee.calendly && (
-              <a
+              <IconButton
+                icon={<Calendar size={22} />}
                 href={employee.calendly}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => handleAction('click_agendar')}
-                className="flex items-center justify-center gap-2 w-full bg-white border-2 border-blue-600 text-blue-600 font-bold py-3 px-6 rounded-xl hover:bg-blue-50 transition-colors"
-              >
-                <Calendar size={18} />
-                {strings.schedule}
-              </a>
+                tooltip={strings.schedule}
+                variant="secondary"
+                className="!w-16 !h-16"
+              />
             )}
           </div>
         </div>

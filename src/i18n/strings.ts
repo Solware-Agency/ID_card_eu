@@ -1,19 +1,19 @@
 export const STRINGS = {
   en: {
-    save: 'SAVE CONTACT',
-    schedule: 'SCHEDULE MEETING',
+    save: 'Guardar contacto',
+    schedule: 'Agendar reunión',
     email: 'Email',
     phone: 'Phone',
     whatsapp: 'WhatsApp',
     website: 'Website',
     linkedin: 'LinkedIn',
-    notFound: 'Contact not found',
-    notFoundDesc: 'The requested profile does not exist.'
+    notFound: 'Contacto no encontrado',
+    notFoundDesc: 'El perfil solicitado no existe.'
   },
   es: {
     save: 'GUARDAR CONTACTO',
     schedule: 'AGENDAR REUNIÓN',
-    email: 'Correo',
+    email: 'Correo electrónico',
     phone: 'Teléfono',
     whatsapp: 'WhatsApp',
     website: 'Sitio web',
