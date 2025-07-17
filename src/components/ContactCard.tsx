@@ -34,6 +34,15 @@ const ContactCard: React.FC = () => {
 
   const formatPhoneForCall = (phone: string) => phone.replace(/\s+/g, '');
 
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(word => word.charAt(0))
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
+
   const IconButton: React.FC<{
     icon: React.ReactNode;
     onClick?: () => void;
@@ -51,7 +60,7 @@ const ContactCard: React.FC = () => {
       secondary: "bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50",
       success: "bg-green-500 hover:bg-green-600 text-white",
       social: "bg-blue-700 hover:bg-blue-800 text-white",
-      language: "bg-gray-100 hover:bg-gray-200 text-gray-600 border-2 border-gray-300 !w-10 !h-10 !rounded-xl"
+      language: "bg-white bg-opacity-20 backdrop-blur-sm text-white hover:bg-opacity-30 border-0 !w-10 !h-10 !rounded-xl"
     };
 
     const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
@@ -82,88 +91,111 @@ const ContactCard: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
       <div className="max-w-sm w-full">
         {/* Main card */}
-        <div className="bg-white rounded-3xl shadow-2xl p-8 relative">
-          {/* Language toggle - top right corner */}
-          <div className="absolute top-6 right-6">
-            <IconButton
-              icon={<Globe2 size={16} />}
-              onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
-              variant="language"
-            />
+        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden relative">
+          {/* Header with gradient background */}
+          <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-8 text-center relative">
+            {/* Language toggle - top right */}
+            <div className="absolute top-4 right-4">
+              <IconButton
+                icon={<Globe2 size={16} />}
+                onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
+                variant="language"
+              />
+            </div>
+
+            {/* Profile initials circle */}
+            <div className="w-28 h-28 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-white border-opacity-30">
+              <span className="text-6xl font-bold text-white">
+                {getInitials(employee.name)}
+              </span>
+            </div>
+
+            {/* Name and title */}
+            <h1 className="text-2xl font-bold text-white mb-2">
+              {employee.name}
+            </h1>
+            <p className="text-blue-100 mb-1">
+              {employee.title[language]}
+            </p>
+            <p className="text-blue-200 text-sm">
+              {employee.company[language]}
+            </p>
           </div>
 
-          {/* Contact actions grid */}
-          <div className="grid grid-cols-3 gap-6 mt-4">
-            {/* Email */}
-            <IconButton
-              icon={<Mail size={24} />}
-              href={`mailto:${employee.email}`}
-              onClick={() => handleAction('click_email')}
-              variant="primary"
-            />
-
-            {/* Phone */}
-            <IconButton
-              icon={<Phone size={24} />}
-              href={`tel:${formatPhoneForCall(employee.phone)}`}
-              onClick={() => handleAction('click_call')}
-              variant="primary"
-            />
-
-            {/* WhatsApp */}
-            <IconButton
-              icon={<MessageCircle size={24} />}
-              href={`https://wa.me/${employee.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => handleAction('click_whatsapp')}
-              variant="success"
-            />
-
-            {/* LinkedIn */}
-            {employee.linkedin && (
+          {/* Contact actions */}
+          <div className="p-8">
+            <div className="grid grid-cols-3 gap-6">
+              {/* Email */}
               <IconButton
-                icon={<Linkedin size={24} />}
-                href={`https://linkedin.com/in/${employee.linkedin}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => handleAction('click_social')}
-                variant="social"
-              />
-            )}
-
-            {/* Website */}
-            {employee.website && (
-              <IconButton
-                icon={<Globe size={24} />}
-                href={`https://${employee.website}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => handleAction('click_social')}
+                icon={<Mail size={24} />}
+                href={`mailto:${employee.email}`}
+                onClick={() => handleAction('click_email')}
                 variant="primary"
               />
-            )}
 
-            {/* Save contact */}
-            <IconButton
-              icon={<Download size={24} />}
-              href={`/vcf/${employee.slug}.vcf`}
-              download
-              onClick={() => handleAction('click_save_contact')}
-              variant="secondary"
-            />
-
-            {/* Schedule meeting */}
-            {employee.calendly && (
+              {/* Phone */}
               <IconButton
-                icon={<Calendar size={24} />}
-                href={employee.calendly}
+                icon={<Phone size={24} />}
+                href={`tel:${formatPhoneForCall(employee.phone)}`}
+                onClick={() => handleAction('click_call')}
+                variant="primary"
+              />
+
+              {/* WhatsApp */}
+              <IconButton
+                icon={<MessageCircle size={24} />}
+                href={`https://wa.me/${employee.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => handleAction('click_agendar')}
+                onClick={() => handleAction('click_whatsapp')}
+                variant="success"
+              />
+
+              {/* LinkedIn */}
+              {employee.linkedin && (
+                <IconButton
+                  icon={<Linkedin size={24} />}
+                  href={`https://linkedin.com/in/${employee.linkedin}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleAction('click_social')}
+                  variant="social"
+                />
+              )}
+
+              {/* Website */}
+              {employee.website && (
+                <IconButton
+                  icon={<Globe size={24} />}
+                  href={`https://${employee.website}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleAction('click_social')}
+                  variant="primary"
+                />
+              )}
+
+              {/* Save contact */}
+              <IconButton
+                icon={<Download size={24} />}
+                href={`/vcf/${employee.slug}.vcf`}
+                download
+                onClick={() => handleAction('click_save_contact')}
                 variant="secondary"
               />
-            )}
+
+              {/* Schedule meeting */}
+              {employee.calendly && (
+                <IconButton
+                  icon={<Calendar size={24} />}
+                  href={employee.calendly}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleAction('click_agendar')}
+                  variant="secondary"
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
