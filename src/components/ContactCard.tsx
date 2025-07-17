@@ -60,7 +60,7 @@ const ContactCard: React.FC = () => {
       secondary: "bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50",
       success: "bg-green-500 hover:bg-green-600 text-white",
       social: "bg-blue-700 hover:bg-blue-800 text-white",
-      language: "bg-white bg-opacity-20 backdrop-blur-sm text-white hover:bg-opacity-30 border-0 !w-10 !h-10 !rounded-xl"
+      language: "bg-gray-100 hover:bg-gray-200 text-gray-600 border-0 !w-10 !h-10 !rounded-xl"
     };
 
     const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
@@ -83,6 +83,47 @@ const ContactCard: React.FC = () => {
     return (
       <button onClick={onClick} className={combinedClasses}>
         {icon}
+      </button>
+    );
+  };
+
+  const ActionButton: React.FC<{
+    children: React.ReactNode;
+    onClick?: () => void;
+    href?: string;
+    target?: string;
+    rel?: string;
+    download?: boolean;
+    variant?: 'primary' | 'secondary';
+    className?: string;
+  }> = ({ children, onClick, href, target, rel, download, variant = 'primary', className = '' }) => {
+    const baseClasses = "w-full py-4 px-6 rounded-2xl font-medium text-center transition-all duration-200 hover:shadow-lg";
+    
+    const variantClasses = {
+      primary: "bg-blue-600 hover:bg-blue-700 text-white",
+      secondary: "bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50"
+    };
+
+    const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
+
+    if (href) {
+      return (
+        <a
+          href={href}
+          target={target}
+          rel={rel}
+          download={download}
+          onClick={onClick}
+          className={combinedClasses}
+        >
+          {children}
+        </a>
+      );
+    }
+
+    return (
+      <button onClick={onClick} className={combinedClasses}>
+        {children}
       </button>
     );
   };
@@ -124,7 +165,7 @@ const ContactCard: React.FC = () => {
 
           {/* Contact actions */}
           <div className="p-8">
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-6 mb-8">
               {/* Email */}
               <IconButton
                 icon={<Mail size={24} />}
@@ -184,7 +225,7 @@ const ContactCard: React.FC = () => {
                 variant="secondary"
               />
 
-              {/* Schedule meeting */}
+              {/* Schedule meeting - only show if calendly exists */}
               {employee.calendly && (
                 <IconButton
                   icon={<Calendar size={24} />}
@@ -194,6 +235,35 @@ const ContactCard: React.FC = () => {
                   onClick={() => handleAction('click_agendar')}
                   variant="secondary"
                 />
+              )}
+            </div>
+
+            {/* Action buttons */}
+            <div className="space-y-4">
+              {/* Save contact button */}
+              <ActionButton
+                href={`/vcf/${employee.slug}.vcf`}
+                download
+                onClick={() => handleAction('click_save_contact')}
+                variant="primary"
+              >
+                GUARDAR CONTACTO
+              </ActionButton>
+
+              {/* Schedule meeting button - only show if calendly exists */}
+              {employee.calendly && (
+                <ActionButton
+                  href={employee.calendly}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleAction('click_agendar')}
+                  variant="secondary"
+                >
+                  <div className="flex items-center justify-center gap-2">
+                    <Calendar size={20} />
+                    AGENDAR REUNIÓN
+                  </div>
+                </ActionButton>
               )}
             </div>
           </div>
