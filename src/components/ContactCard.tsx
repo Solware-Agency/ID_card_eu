@@ -212,23 +212,25 @@ const ContactCard: React.FC = () => {
 
           {/* Contact section */}
           <div className="p-8">
-            {/* Icon grid */}
-            <div className="grid grid-cols-3 gap-4 mb-8">
-              {contactOptions.map((option, index) => (
-                <IconButton
-                  key={index}
-                  icon={option.icon}
-                  href={option.href}
-                  target={option.target}
-                  rel={option.rel}
-                  download={option.download}
-                  onClick={() => handleAction(option.action)}
-                  variant={option.variant}
-                />
-              ))}
+            {/* Icon grid section */}
+            <div className="mb-8">
+              <div className="grid grid-cols-3 gap-6 justify-items-center">
+                {contactOptions.map((option, index) => (
+                  <IconButton
+                    key={index}
+                    icon={option.icon}
+                    href={option.href}
+                    target={option.target}
+                    rel={option.rel}
+                    download={option.download}
+                    onClick={() => handleAction(option.action)}
+                    variant={option.variant}
+                  />
+                ))}
+              </div>
             </div>
 
-            {/* Action buttons */}
+            {/* Action buttons section */}
             <div className="space-y-4">
               {/* Save contact button */}
               <ActionButton
