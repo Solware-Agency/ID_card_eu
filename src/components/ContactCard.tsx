@@ -49,10 +49,9 @@ const ContactCard: React.FC = () => {
     href?: string;
     target?: string;
     rel?: string;
-    download?: boolean;
     className?: string;
     variant?: 'primary' | 'secondary' | 'success' | 'social' | 'language';
-  }> = ({ icon, onClick, href, target, rel, download, className = '', variant = 'primary' }) => {
+  }> = ({ icon, onClick, href, target, rel, className = '', variant = 'primary' }) => {
     const baseClasses = "w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-200 hover:scale-105 hover:shadow-lg";
     
     const variantClasses = {
@@ -71,7 +70,6 @@ const ContactCard: React.FC = () => {
           href={href}
           target={target}
           rel={rel}
-          download={download}
           onClick={onClick}
           className={combinedClasses}
         >
@@ -128,7 +126,7 @@ const ContactCard: React.FC = () => {
     );
   };
 
-  // Filter available contact options
+  // Filter available contact options (removed download button)
   const contactOptions = [
     {
       icon: <Mail size={24} />,
@@ -165,14 +163,7 @@ const ContactCard: React.FC = () => {
       rel: 'noopener noreferrer',
       action: 'click_social',
       variant: 'primary' as const
-    }] : []),
-    {
-      icon: <Download size={24} />,
-      href: `/vcf/${employee.slug}.vcf`,
-      download: true,
-      action: 'click_save_contact',
-      variant: 'secondary' as const
-    }
+    }] : [])
   ];
 
   return (
@@ -212,9 +203,9 @@ const ContactCard: React.FC = () => {
 
           {/* Contact section */}
           <div className="p-8">
-            {/* Icon grid section */}
+            {/* Icon grid section - 2 columns, up to 3 rows */}
             <div className="mb-8">
-              <div className="grid grid-cols-3 gap-6 justify-items-center">
+              <div className="grid grid-cols-2 gap-6 justify-items-center">
                 {contactOptions.map((option, index) => (
                   <IconButton
                     key={index}
@@ -222,7 +213,6 @@ const ContactCard: React.FC = () => {
                     href={option.href}
                     target={option.target}
                     rel={option.rel}
-                    download={option.download}
                     onClick={() => handleAction(option.action)}
                     variant={option.variant}
                   />
