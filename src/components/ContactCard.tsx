@@ -95,7 +95,7 @@ const ContactCard: React.FC = () => {
     variant?: 'primary' | 'secondary';
     className?: string;
   }> = ({ children, onClick, href, target, rel, download, variant = 'primary', className = '' }) => {
-    const baseClasses = "w-full py-2 px-3 rounded-2xl font-medium text-center transition-all duration-200 hover:shadow-lg";
+    const baseClasses = "w-full py-1 px-2 rounded-xl font-medium text-center transition-all duration-200 hover:shadow-lg text-sm";
     
     const variantClasses = {
       primary: "bg-blue-600 hover:bg-blue-700 text-white",
