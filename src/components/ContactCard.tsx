@@ -205,7 +205,7 @@ const ContactCard: React.FC = () => {
           <div className="p-8">
             {/* Icon grid section - 2 columns, up to 3 rows */}
             <div className="mb-8">
-              <div className="grid grid-cols-2 gap-6 justify-items-center">
+              <div className="grid grid-cols-3 gap-4 justify-items-center">
                 {contactOptions.map((option, index) => (
                   <IconButton
                     key={index}
