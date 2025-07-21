@@ -62,7 +62,7 @@ const ContactCard: React.FC = () => {
       language: "bg-white bg-opacity-20 backdrop-blur-sm text-white hover:bg-opacity-30 border-0 !w-10 !h-10 !rounded-xl"
     };
 
-    const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
+    const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${className}`.replace('h-16', className.includes('row-span-2') ? 'h-36' : 'h-16');
 
     if (href) {
       return (
@@ -141,12 +141,13 @@ const ContactCard: React.FC = () => {
       variant: 'primary' as const
     },
     ...(employee.website ? [{
-      icon: <img src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Logos/Svg/Logo_Blanco_Solware.svg" alt="Solware" className="w-6 h-6" />,
+      icon: <img src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Logos/Svg/Logo_Blanco_Solware.svg" alt="Solware" className="w-12 h-12" />,
       href: `https://${employee.website}`,
       target: '_blank',
       rel: 'noopener noreferrer',
       action: 'click_social',
-      variant: 'primary' as const
+      variant: 'primary' as const,
+      className: 'col-span-1 row-span-2'
     }] : []),
     ...(employee.linkedin ? [{
       icon: <Linkedin size={24} />,
@@ -205,7 +206,7 @@ const ContactCard: React.FC = () => {
           <div className="p-8">
             {/* Icon grid section - 2 columns, up to 3 rows */}
             <div className="mb-8">
-              <div className="grid grid-cols-3 gap-4 justify-items-center">
+              <div className="grid grid-cols-3 grid-rows-2 gap-4 justify-items-center">
                 {contactOptions.map((option, index) => (
                   <IconButton
                     key={index}
@@ -215,6 +216,7 @@ const ContactCard: React.FC = () => {
                     rel={option.rel}
                     onClick={() => handleAction(option.action)}
                     variant={option.variant}
+                    className={option.className}
                   />
                 ))}
               </div>
