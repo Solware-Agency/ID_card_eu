@@ -221,7 +221,7 @@ const ContactCard: React.FC = () => {
             </div>
 
             {/* Action buttons section */}
-            <div className="space-y-4">
+            <div className="space-y-6">
               {/* Save contact button */}
               <ActionButton
                 href={`/vcf/${employee.slug}.vcf`}
