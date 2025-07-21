@@ -245,7 +245,7 @@ const ContactCard: React.FC = () => {
                 >
                   <div className="flex items-center justify-center gap-2">
                     <Calendar size={20} />
-                    AGENDAR REUNIÓN
+                    REUNÁMONOS
                   </div>
                 </ActionButton>
               )}
