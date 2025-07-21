@@ -173,7 +173,7 @@ const ContactCard: React.FC = () => {
         {/* Main card */}
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden relative">
           {/* Header with gradient background */}
-          <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-8 text-center relative">
+          <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-6 text-center relative">
             {/* Language toggle - top right */}
             <div className="absolute top-4 right-4">
               <IconButton
@@ -184,14 +184,14 @@ const ContactCard: React.FC = () => {
             </div>
 
             {/* Profile initials circle */}
-            <div className="w-28 h-28 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-white border-opacity-30">
-              <span className="text-6xl font-bold text-white">
+            <div className="w-24 h-24 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-white border-opacity-30">
+              <span className="text-5xl font-bold text-white">
                 {getInitials(employee.name)}
               </span>
             </div>
 
             {/* Name and title */}
-            <h1 className="text-2xl font-bold text-white mb-2">
+            <h1 className="text-xl font-bold text-white mb-2">
               {employee.name}
             </h1>
             <p className="text-blue-100 mb-1">
