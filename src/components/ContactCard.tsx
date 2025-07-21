@@ -140,14 +140,14 @@ const ContactCard: React.FC = () => {
       action: 'click_call',
       variant: 'primary' as const
     },
-    {
-      icon: <MessageCircle size={24} />,
-      href: `https://wa.me/${employee.whatsapp}`,
+    ...(employee.website ? [{
+      icon: <Globe size={24} />,
+      href: `https://${employee.website}`,
       target: '_blank',
       rel: 'noopener noreferrer',
-      action: 'click_whatsapp',
-      variant: 'success' as const
-    },
+      action: 'click_social',
+      variant: 'primary' as const
+    }] : []),
     ...(employee.linkedin ? [{
       icon: <Linkedin size={24} />,
       href: `https://linkedin.com/in/${employee.linkedin}`,
@@ -156,14 +156,14 @@ const ContactCard: React.FC = () => {
       action: 'click_social',
       variant: 'social' as const
     }] : []),
-    ...(employee.website ? [{
-      icon: <Globe size={24} />,
-      href: `https://${employee.website}`,
+    {
+      icon: <MessageCircle size={24} />,
+      href: `https://wa.me/${employee.whatsapp}`,
       target: '_blank',
       rel: 'noopener noreferrer',
-      action: 'click_social',
-      variant: 'primary' as const
-    }] : [])
+      action: 'click_whatsapp',
+      variant: 'success' as const
+    }
   ];
 
   return (
