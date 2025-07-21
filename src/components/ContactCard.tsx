@@ -223,14 +223,13 @@ const ContactCard: React.FC = () => {
             </div>
 
             {/* Action buttons section */}
-            <div className="space-y-8">
+            <div className="flex gap-4">
               {/* Save contact button */}
               <ActionButton
                 href={`/vcf/${employee.slug}.vcf`}
                 download
                 onClick={() => handleAction('click_save_contact')}
                 variant="primary"
-                className="mb-4"
               >
                 GUARDAR CONTACTO
               </ActionButton>
@@ -243,7 +242,6 @@ const ContactCard: React.FC = () => {
                   rel="noopener noreferrer"
                   onClick={() => handleAction('click_agendar')}
                   variant="secondary"
-                  className="mt-4"
                 >
                   <div className="flex items-center justify-center gap-2">
                     <Calendar size={20} />
