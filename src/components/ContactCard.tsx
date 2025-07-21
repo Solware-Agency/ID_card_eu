@@ -223,7 +223,7 @@ const ContactCard: React.FC = () => {
             </div>
 
             {/* Action buttons section */}
-            <div className="flex gap-4">
+            <div className="space-y-4">
               {/* Save contact button */}
               <ActionButton
                 href={`/vcf/${employee.slug}.vcf`}
@@ -231,7 +231,7 @@ const ContactCard: React.FC = () => {
                 onClick={() => handleAction('click_save_contact')}
                 variant="primary"
               >
-                GUARDAR CONTACTO
+                MI CONTACTO
               </ActionButton>
 
               {/* Schedule meeting button - only show if calendly exists */}
