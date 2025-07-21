@@ -141,7 +141,7 @@ const ContactCard: React.FC = () => {
       variant: 'primary' as const
     },
     ...(employee.website ? [{
-      icon: <Globe size={24} />,
+      icon: <img src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Logos/Svg/Logo_Blanco_Solware.svg" alt="Solware" className="w-6 h-6" />,
       href: `https://${employee.website}`,
       target: '_blank',
       rel: 'noopener noreferrer',
