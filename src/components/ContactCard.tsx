@@ -230,6 +230,7 @@ const ContactCard: React.FC = () => {
                 download
                 onClick={() => handleAction('click_save_contact')}
                 variant="primary"
+               className="w-full"
               >
                 MI CONTACTO
               </ActionButton>
@@ -242,6 +243,7 @@ const ContactCard: React.FC = () => {
                   rel="noopener noreferrer"
                   onClick={() => handleAction('click_agendar')}
                   variant="secondary"
+                 className="w-full"
                 >
                   <div className="flex items-center justify-center gap-2">
                     <Calendar size={20} />
