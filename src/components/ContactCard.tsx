@@ -55,7 +55,7 @@ const ContactCard: React.FC = () => {
     variant?: 'primary' | 'secondary' | 'success' | 'social' | 'language' | 'solware';
     ariaLabel?: string;
   }> = ({ icon, onClick, href, target, rel, className = '', variant = 'primary', ariaLabel }) => {
-    const baseClasses = "w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-md";
+    const baseClasses = "w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-md";
     
     const variantClasses = {
       primary: "bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white shadow-md hover:shadow-lg",
@@ -63,7 +63,7 @@ const ContactCard: React.FC = () => {
       success: "bg-green-500 hover:bg-green-600 active:bg-green-700 text-white shadow-md hover:shadow-lg",
       social: "bg-blue-700 hover:bg-blue-800 active:bg-blue-900 text-white shadow-md hover:shadow-lg",
       solware: "bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 active:from-blue-700 active:to-blue-900 text-white shadow-md hover:shadow-lg",
-      language: "bg-white bg-opacity-20 backdrop-blur-sm text-white hover:bg-opacity-30 active:bg-opacity-40 border-0 !w-10 !h-10 !rounded-xl focus:ring-white focus:ring-opacity-50"
+      language: "bg-white bg-opacity-20 backdrop-blur-sm text-white hover:bg-opacity-30 active:bg-opacity-40 border-0 !w-8 !h-8 sm:!w-10 sm:!h-10 !rounded-xl focus:ring-white focus:ring-opacity-50"
     };
 
     const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
@@ -101,7 +101,7 @@ const ContactCard: React.FC = () => {
     className?: string;
     ariaLabel?: string;
   }> = ({ children, onClick, href, target, rel, download, variant = 'primary', className = '', ariaLabel }) => {
-    const baseClasses = "w-full py-4 px-6 rounded-xl font-medium text-center transition-all duration-300 hover:shadow-xl active:scale-98 focus:outline-none focus:ring-4 focus:ring-blue-300 text-base";
+    const baseClasses = "w-full py-3 sm:py-4 px-3 sm:px-6 rounded-xl font-medium text-center transition-all duration-300 hover:shadow-xl active:scale-98 focus:outline-none focus:ring-4 focus:ring-blue-300 text-sm sm:text-base leading-tight";
     
     const variantClasses = {
       primary: "bg-blue-600 hover:bg-white hover:text-blue-600 hover:border-2 hover:border-blue-600 active:bg-blue-800 active:text-white active:border-blue-800 text-white shadow-lg hover:shadow-xl transition-all duration-300",
@@ -177,18 +177,18 @@ const ContactCard: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
-      <div className="max-w-sm w-full">
+      <div className="max-w-sm w-full mx-auto">
         <FadeContent 
           blur={true} 
           duration={2000} 
           easing="ease-out" 
           initialOpacity={0}
-          className="bg-white rounded-3xl shadow-2xl overflow-hidden relative"
+          className="bg-white rounded-3xl shadow-2xl overflow-hidden relative mx-4 sm:mx-0"
         >
           {/* Main card */}
           <div>
             {/* Header with gradient background */}
-            <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-6 text-center relative">
+            <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-4 sm:p-6 text-center relative">
               {/* Language toggle - top right */}
               <div className="absolute top-4 right-4">
                 <IconButton
@@ -200,8 +200,8 @@ const ContactCard: React.FC = () => {
               </div>
 
               {/* Profile initials circle */}
-              <div className="w-24 h-24 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-white border-opacity-30">
-                <span className="text-5xl font-bold text-white">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-white border-opacity-30">
+                <span className="text-4xl sm:text-5xl font-bold text-white">
                   {getInitials(employee.name)}
                 </span>
               </div>
@@ -241,19 +241,19 @@ const ContactCard: React.FC = () => {
                 ]}
                 className="text-2xl font-bold text-white mb-4 text-center"
               />
-              <p className="text-blue-100 mb-1">
+              <p className="text-blue-100 mb-1 text-sm sm:text-base px-2">
                 {employee.title[language]}
               </p>
-              <p className="text-blue-200 text-sm text-center">
+              <p className="text-blue-200 text-xs sm:text-sm text-center px-2">
                 {employee.company[language]}
               </p>
             </div>
 
             {/* Contact section */}
-            <div className="p-8 space-y-8">
+            <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8">
               {/* Icon grid section - 4 circular buttons */}
               <div>
-                <div className="grid grid-cols-4 gap-4 justify-items-center">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 justify-items-center">
                   {contactOptions.map((option, index) => (
                     <IconButton
                       key={index}
@@ -270,14 +270,14 @@ const ContactCard: React.FC = () => {
               </div>
 
               {/* Action buttons section */}
-              <div className="mt-6 px-2">
-                <div className="flex flex-row gap-4 justify-center items-center w-full">
+              <div className="mt-4 sm:mt-6 px-1 sm:px-2">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full">
                   <ActionButton
                     href={`/vcf/${employee.slug}.vcf`}
                     download
                     onClick={() => handleAction('click_save_contact')}
                     variant="primary"
-                    className="flex-1 min-w-0"
+                    className="w-full sm:flex-1 sm:min-w-0"
                     ariaLabel={`Conectar con ${employee.name}`}
                   >
                     Conecta conmigo
@@ -289,7 +289,7 @@ const ContactCard: React.FC = () => {
                       rel="noopener noreferrer"
                       onClick={() => handleAction('click_agendar')}
                       variant="secondary"
-                      className="flex-1 min-w-0"
+                      className="w-full sm:flex-1 sm:min-w-0"
                       ariaLabel={`Programar una cita con ${employee.name}`}
                     >
                       Pongamos fecha
