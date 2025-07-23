@@ -290,12 +290,6 @@ const ContactCard: React.FC = () => {
                       GUARDAR CONTACTO
                     </ActionButton>
                   </StarBorder>
-                      download
-                      className="block w-full h-full text-center text-sm sm:text-base leading-tight"
-                    >
-                      Conecta conmigo
-                    </a>
-                  </StarBorder>
                   {employee.calendly && (
                     <StarBorder
                       as="div"
@@ -314,13 +308,6 @@ const ContactCard: React.FC = () => {
                       >
                         AGENDAR REUNIÓN
                       </ActionButton>
-                    </StarBorder>
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block w-full h-full text-center text-sm sm:text-base leading-tight"
-                      >
-                        Pongamos fecha
-                      </a>
                     </StarBorder>
                   )}
                 </div>
