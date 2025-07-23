@@ -100,18 +100,14 @@ export const ELEMENT_STYLES = {
 export const TEXT_CONTENT = {
   es: {
     saveContact: 'Guardar contacto',
-    saveContactSub: '',
-    scheduleMeeting: 'Pongamos',
-    scheduleMeetingSub: 'fecha',
+    scheduleMeeting: 'Pongamos fecha',
     notFound: 'Contacto no encontrado',
     notFoundDesc: 'El perfil solicitado no existe.',
     languageToggle: 'Cambiar idioma'
   },
   en: {
     saveContact: 'Save contact',
-    saveContactSub: '',
-    scheduleMeeting: "Let's set",
-    scheduleMeetingSub: 'a date',
+    scheduleMeeting: 'Schedule meeting',
     notFound: 'Contact not found',
     notFoundDesc: 'The requested profile does not exist.',
     languageToggle: 'Change language'
