@@ -7,6 +7,7 @@ import WorkButton from '../../components/animata/button/work-button';
 import AnimatedDock from '../../components/animata/container/animated-dock';
 import { getEmployeeBySlug } from '../data/empleados';
 import { trackEvent } from '../utils/analytics';
+import { TEXT_CONTENT } from '../constants';
 import type { Language } from '../types';
 
 const ContactCard: React.FC = () => {
