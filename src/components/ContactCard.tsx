@@ -26,8 +26,8 @@ const ContactCard: React.FC = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">Contacto no encontrado</h1>
-          <p className="text-gray-600">El perfil solicitado no existe.</p>
+          <h1 className="text-2xl font-bold text-gray-800 mb-4">{TEXT_CONTENT.es.notFound}</h1>
+          <p className="text-gray-600">{TEXT_CONTENT.es.notFoundDesc}</p>
         </div>
       </div>
     );
@@ -104,7 +104,7 @@ const ContactCard: React.FC = () => {
     className?: string;
     ariaLabel?: string;
   }> = ({ children, onClick, href, target, rel, download, variant = 'primary', className = '', ariaLabel }) => {
-    const baseClasses = "w-full py-3 sm:py-4 px-3 sm:px-6 rounded-xl font-medium text-center transition-all duration-300 hover:shadow-xl active:scale-98 focus:outline-none focus:ring-4 focus:ring-blue-300 text-sm sm:text-base leading-tight";
+    const baseClasses = "w-full py-3 sm:py-4 px-6 sm:px-10 rounded-xl font-medium text-center transition-all duration-300 hover:shadow-xl active:scale-98 focus:outline-none focus:ring-4 focus:ring-blue-300 text-sm sm:text-base leading-tight";
     
     const variantClasses = {
       primary: "bg-blue-600 hover:bg-white hover:text-blue-600 hover:border-2 hover:border-blue-600 active:bg-blue-800 active:text-white active:border-blue-800 text-white shadow-lg hover:shadow-xl transition-all duration-300",
@@ -284,6 +284,9 @@ const ContactCard: React.FC = () => {
 
               {/* Contact section */}
               <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8 bg-white/10 backdrop-blur-sm rounded-b-3xl">
+                {/* Separator line */}
+                <div className="absolute top-0 left-3 right-3 h-0.5 bg-white/50"></div>
+                
                 {/* Horizontal action buttons section */}
                 <div className="flex justify-center items-center gap-4 my-6">
                   {contactOptions.map((option, index) => (
@@ -318,8 +321,8 @@ const ContactCard: React.FC = () => {
                     >
                       <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 backdrop-blur-sm border border-indigo-400/50 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-xl hover:shadow-2xl hover:from-indigo-500 hover:to-purple-500">
                         <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/30 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                        <span className="font-bold text-white text-center block leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-200 flex items-center justify-center h-full text-xs sm:text-sm md:text-base">
-                          {TEXT_CONTENT[language].scheduleMeeting}
+                        <span className="font-bold text-white text-center block leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-200">
+                          {TEXT_CONTENT[language].saveContact}
                         </span>
                       </button>
                     </a>
@@ -334,13 +337,8 @@ const ContactCard: React.FC = () => {
                       >
                         <button className="group relative overflow-hidden rounded-full bg-slate-800/30 backdrop-blur-sm border-2 border-slate-600/40 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-lg hover:shadow-xl hover:bg-slate-700/40">
                           <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-indigo-500/25 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                          <span className="font-medium text-white/90 group-hover:text-white text-center block leading-tight relative z-10 group-hover:drop-shadow-lg transition-all duration-300 flex items-center justify-center h-full">
-                            <span className="font-bold text-white text-center block leading-snug relative z-10 group-hover:drop-shadow-lg transition-all duration-200 flex items-center justify-center h-full text-xs sm:text-sm md:text-base">
-                              <span className="text-sm sm:text-base md:text-lg leading-tight">
-                                Pongamos<br />
-                                fecha
-                              </span>
-                            </span>
+                          <span className="font-bold text-white text-center block leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-200">
+                            {TEXT_CONTENT[language].scheduleMeeting}
                           </span>
                         </button>
                       </a>
