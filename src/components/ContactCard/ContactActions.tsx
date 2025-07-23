@@ -66,8 +66,7 @@ const ContactActions: React.FC<ContactActionsProps> = ({ employee, language }) =
           ariaLabel={`Guardar contacto de ${employee.name}`}
           variant="primary"
         >
-          {TEXT_CONTENT[language].saveContact}<br />
-          {TEXT_CONTENT[language].saveContactSub && TEXT_CONTENT[language].saveContactSub}
+          Guardar contacto
         </ActionButton>
         
         {employee.calendly && (
