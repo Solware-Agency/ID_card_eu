@@ -52,7 +52,7 @@ const ContactCard: React.FC = () => {
     className?: string;
     variant?: 'primary' | 'secondary' | 'success' | 'social' | 'language';
     ariaLabel?: string;
-  }> = ({ icon, onClick, href, target, rel, className = '', variant = 'primary' }) => {
+  }> = ({ icon, onClick, href, target, rel, className = '', variant = 'primary', ariaLabel }) => {
     const baseClasses = "w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300";
     
     const variantClasses = {
@@ -97,7 +97,7 @@ const ContactCard: React.FC = () => {
     variant?: 'primary' | 'secondary';
     className?: string;
     ariaLabel?: string;
-  }> = ({ children, onClick, href, target, rel, download, variant = 'primary', className = '' }) => {
+  }> = ({ children, onClick, href, target, rel, download, variant = 'primary', className = '', ariaLabel }) => {
     const baseClasses = "w-full py-4 px-6 rounded-xl font-medium text-center transition-all duration-300 hover:shadow-xl active:scale-98 focus:outline-none focus:ring-4 focus:ring-blue-300 text-base";
     
     const variantClasses = {
