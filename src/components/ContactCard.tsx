@@ -180,7 +180,7 @@ const ContactCard: React.FC = () => {
       <div className="max-w-sm w-full">
         <FadeContent 
           blur={true} 
-          duration={1000} 
+          duration={2000} 
           easing="ease-out" 
           initialOpacity={0}
           className="bg-white rounded-3xl shadow-2xl overflow-hidden relative"
@@ -208,9 +208,10 @@ const ContactCard: React.FC = () => {
               {/* Name and title */}
               <BlurText
                 text={employee.name}
-                delay={150}
+                delay={300}
                 animateBy="words"
                 direction="top"
+                stepDuration={0.7}
                 className="text-2xl font-bold text-white mb-4 text-center"
               />
               <p className="text-blue-100 mb-1">
