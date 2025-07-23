@@ -333,8 +333,8 @@ const ContactCard: React.FC = () => {
                       >
                         <button className="group relative overflow-hidden rounded-full bg-slate-800/30 backdrop-blur-sm border-2 border-slate-600/40 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-lg hover:shadow-xl hover:bg-slate-700/40">
                           <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-indigo-500/25 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                          <span className="font-medium text-white/90 group-hover:text-white text-center block leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-300">
-                            Pongamos<br />
+                          <span className="font-medium text-white/90 group-hover:text-white text-center block leading-tight relative z-10 group-hover:drop-shadow-lg transition-all duration-300 flex items-center justify-center h-full">
+                          <span className="font-bold text-white text-center block leading-tight relative z-10 group-hover:drop-shadow-lg transition-all duration-200 flex items-center justify-center h-full">
                             fecha
                           </span>
                         </button>
