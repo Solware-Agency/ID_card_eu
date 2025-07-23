@@ -65,7 +65,7 @@ const ContactCard: React.FC = () => {
       success: "bg-green-500 hover:bg-green-600 active:bg-green-700 text-white shadow-md hover:shadow-lg",
       social: "bg-blue-700 hover:bg-blue-800 active:bg-blue-900 text-white shadow-md hover:shadow-lg",
       solware: "bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 active:from-blue-700 active:to-blue-900 text-white shadow-md hover:shadow-lg",
-      language: "bg-white bg-opacity-20 backdrop-blur-sm text-white hover:bg-opacity-30 active:bg-opacity-40 border-0 !w-8 !h-8 sm:!w-10 sm:!h-10 !rounded-xl focus:ring-white focus:ring-opacity-50"
+      language: "bg-white bg-opacity-20 backdrop-blur-sm text-white hover:bg-opacity-30 hover:scale-105 hover:shadow-lg hover:shadow-white/20 active:bg-opacity-40 active:scale-95 border-0 !w-8 !h-8 sm:!w-10 sm:!h-10 !rounded-xl focus:ring-2 focus:ring-white focus:ring-opacity-50 focus:outline-none transition-all duration-200"
     };
 
     const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
@@ -292,10 +292,10 @@ const ContactCard: React.FC = () => {
                       target={option.target}
                       rel={option.rel}
                       onClick={() => handleAction(option.action)}
-                      className="group relative flex flex-col items-center justify-center bg-slate-800/40 hover:bg-slate-700/50 backdrop-blur-sm rounded-full w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 border border-indigo-400/20"
+                      className="group relative flex flex-col items-center justify-center bg-slate-800/40 hover:bg-slate-700/60 backdrop-blur-sm rounded-full w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-indigo-500/25 hover:scale-110 hover:border-indigo-400/40 active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 focus:ring-offset-2 focus:ring-offset-transparent border border-indigo-400/20"
                       aria-label={option.ariaLabel}
                     >
-                      <div className="text-white/90 group-hover:text-white transition-colors duration-200">
+                      <div className="text-white/90 group-hover:text-white group-hover:drop-shadow-lg transition-all duration-200">
                         {React.cloneElement(option.icon as React.ReactElement, {
                           size: 20,
                           className: "sm:w-6 sm:h-6"
@@ -316,8 +316,8 @@ const ContactCard: React.FC = () => {
                       aria-label={`Guardar contacto de ${employee.name}`}
                     >
                       <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 backdrop-blur-sm border border-indigo-400/50 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-xl hover:shadow-2xl hover:from-indigo-500 hover:to-purple-500">
-                        <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/20 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                        <span className="font-bold text-white text-center block leading-tight mx-auto relative z-10">
+                        <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/25 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
+                        <span className="font-bold text-white text-center block leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-200">
                           {language === 'es' ? 'Conecta' : 'Connect'}<br />
                           {language === 'es' ? 'conmigo' : 'with me'}
                         </span>
