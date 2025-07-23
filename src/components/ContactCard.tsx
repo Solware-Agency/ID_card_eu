@@ -4,6 +4,7 @@ import { Mail, Phone, MessageCircle, Linkedin, Globe, Calendar, Download, Globe2
 import BlurText from './BlurText';
 import FadeContent from './FadeContent';
 import WorkButton from '../../components/animata/button/work-button';
+import AnimatedDock from '../../components/animata/container/animated-dock';
 import { getEmployeeBySlug } from '../data/empleados';
 import { trackEvent } from '../utils/analytics';
 import type { Language } from '../types';
@@ -258,19 +259,19 @@ const ContactCard: React.FC = () => {
             <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8">
               {/* Icon grid section - 4 circular buttons */}
               <div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 justify-items-center">
-                  {contactOptions.map((option, index) => (
-                    <IconButton
-                      key={index}
-                      icon={option.icon}
-                      href={option.href}
-                      target={option.target}
-                      rel={option.rel}
-                      onClick={() => handleAction(option.action)}
-                      variant={option.variant}
-                      ariaLabel={option.ariaLabel}
-                    />
-                  ))}
+                <div className="relative flex h-20 w-full items-center justify-center">
+                  <AnimatedDock
+                    items={contactOptions.map(option => ({
+                      href: option.href,
+                      icon: option.icon,
+                      title: option.label,
+                      onClick: () => handleAction(option.action),
+                      target: option.target,
+                      rel: option.rel
+                    }))}
+                    largeClassName="max-w-lg bg-white/20 backdrop-blur-sm border border-gray-200/30"
+                    smallClassName="w-full"
+                  />
                 </div>
               </div>
 
