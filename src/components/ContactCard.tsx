@@ -208,10 +208,37 @@ const ContactCard: React.FC = () => {
               {/* Name and title */}
               <BlurText
                 text={employee.name}
-                delay={300}
+                delay={400}
                 animateBy="words"
                 direction="top"
-                stepDuration={0.7}
+                stepDuration={0.8}
+                threshold={0.05}
+                animationFrom={{ 
+                  filter: "blur(15px)", 
+                  opacity: 0, 
+                  y: -30,
+                  scale: 0.9
+                }}
+                animationTo={[
+                  { 
+                    filter: "blur(8px)", 
+                    opacity: 0.3, 
+                    y: -10,
+                    scale: 0.95
+                  },
+                  { 
+                    filter: "blur(3px)", 
+                    opacity: 0.7, 
+                    y: -2,
+                    scale: 0.98
+                  },
+                  { 
+                    filter: "blur(0px)", 
+                    opacity: 1, 
+                    y: 0,
+                    scale: 1
+                  }
+                ]}
                 className="text-2xl font-bold text-white mb-4 text-center"
               />
               <p className="text-blue-100 mb-1">
