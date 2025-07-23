@@ -178,8 +178,8 @@ const ContactCard: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
-      <div className="min-h-screen relative flex items-center justify-center p-4 overflow-hidden">
+    <div className="fixed inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden">
         {/* Animated colorful background */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-500">
           {/* Floating abstract shapes */}
@@ -193,6 +193,10 @@ const ContactCard: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent animate-pulse animation-delay-3000"></div>
         </div>
         
+      </div>
+      
+      {/* Content container */}
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
         <div className="max-w-sm w-full mx-auto">
           <FadeContent 
             blur={true} 
