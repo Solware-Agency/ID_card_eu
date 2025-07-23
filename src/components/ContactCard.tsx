@@ -311,17 +311,17 @@ const ContactCard: React.FC = () => {
 
                 {/* Action buttons section */}
                 <div className="mt-4 sm:mt-6 px-1 sm:px-2">
-                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch w-full">
                     <a
                       href={`/vcf/${employee.slug}.vcf`}
                       download
                       onClick={() => handleAction('click_save_contact')}
-                      className="w-full sm:flex-1 sm:min-w-0 sm:max-w-48"
+                      className="flex-1"
                       aria-label={`Guardar contacto de ${employee.name}`}
                     >
-                      <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 backdrop-blur-sm border border-indigo-400/50 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-xl hover:shadow-2xl hover:from-indigo-500 hover:to-purple-500">
+                      <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 backdrop-blur-sm border border-indigo-400/50 px-4 sm:px-6 py-3 text-sm sm:text-base transition-all w-full h-12 sm:h-14 shadow-xl hover:shadow-2xl hover:from-indigo-500 hover:to-purple-500 flex items-center justify-center">
                         <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/30 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                        <span className="font-bold text-white text-center block leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-200">
+                        <span className="font-bold text-white text-center leading-tight relative z-10 group-hover:drop-shadow-lg transition-all duration-200 whitespace-nowrap">
                           {TEXT_CONTENT[language].saveContact}
                         </span>
                       </button>
@@ -332,12 +332,12 @@ const ContactCard: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => handleAction('click_schedule')}
-                        className="w-full sm:flex-1 sm:min-w-0 sm:max-w-48"
+                        className="flex-1"
                         aria-label={`Programar una cita con ${employee.name}`}
                       >
-                        <button className="group relative overflow-hidden rounded-full bg-slate-800/30 backdrop-blur-sm border-2 border-slate-600/40 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-lg hover:shadow-xl hover:bg-slate-700/40">
+                        <button className="group relative overflow-hidden rounded-full bg-slate-800/30 backdrop-blur-sm border-2 border-slate-600/40 px-4 sm:px-6 py-3 text-sm sm:text-base transition-all w-full h-12 sm:h-14 shadow-lg hover:shadow-xl hover:bg-slate-700/40 flex items-center justify-center">
                           <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-indigo-500/25 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                          <span className="font-bold text-white text-center block leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-200">
+                          <span className="font-bold text-white text-center leading-tight relative z-10 group-hover:drop-shadow-lg transition-all duration-200 whitespace-nowrap">
                             {TEXT_CONTENT[language].scheduleMeeting}
                           </span>
                         </button>
