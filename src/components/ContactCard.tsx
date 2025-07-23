@@ -101,8 +101,8 @@ const ContactCard: React.FC = () => {
     const baseClasses = "w-full py-4 px-6 rounded-xl font-medium text-center transition-all duration-300 hover:shadow-xl active:scale-98 focus:outline-none focus:ring-4 focus:ring-blue-300 text-base";
     
     const variantClasses = {
-      primary: "bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white shadow-lg hover:shadow-xl",
-      secondary: "bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 active:bg-blue-100 shadow-lg hover:shadow-xl"
+      primary: "bg-blue-600 hover:bg-white hover:text-blue-600 hover:border-2 hover:border-blue-600 active:bg-blue-800 active:text-white active:border-blue-800 text-white shadow-lg hover:shadow-xl transition-all duration-300",
+      secondary: "bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 active:bg-blue-100 active:text-blue-600 shadow-lg hover:shadow-xl transition-all duration-300"
     };
 
     const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
@@ -234,21 +234,22 @@ const ContactCard: React.FC = () => {
             </div>
 
             {/* Action buttons section */}
-            <div className="space-y-4">
-              {employee.calendly ? (
-                <div className="flex gap-4">
-                  <div className="flex-1">
-                    <ActionButton
-                      href={`/vcf/${employee.slug}.vcf`}
-                      download
-                      onClick={() => handleAction('click_save_contact')}
-                      variant="primary"
-                      className="w-full"
-                      ariaLabel={`Descargar información de contacto de ${employee.name}`}
-                    >
-                      MI CONTACTO
-                    </ActionButton>
-                  </div>
+            {/* Action buttons section - Always horizontal row */}
+            <div className="mt-8">
+              <div className="flex gap-4 w-full">
+                <div className="flex-1">
+                  <ActionButton
+                    href={`/vcf/${employee.slug}.vcf`}
+                    download
+                    onClick={() => handleAction('click_save_contact')}
+                    variant="primary"
+                    className="w-full"
+                    ariaLabel={`Descargar información de contacto de ${employee.name}`}
+                  >
+                    MI CONTACTO
+                  </ActionButton>
+                </div>
+                {employee.calendly && (
                   <div className="flex-1">
                     <ActionButton
                       href={employee.calendly}
@@ -265,21 +266,8 @@ const ContactCard: React.FC = () => {
                       </div>
                     </ActionButton>
                   </div>
-                </div>
-              ) : (
-                <div className="w-full">
-                  <ActionButton
-                    href={`/vcf/${employee.slug}.vcf`}
-                    download
-                    onClick={() => handleAction('click_save_contact')}
-                    variant="primary"
-                    className="w-full"
-                    ariaLabel={`Descargar información de contacto de ${employee.name}`}
-                  >
-                    MI CONTACTO
-                  </ActionButton>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </div>
