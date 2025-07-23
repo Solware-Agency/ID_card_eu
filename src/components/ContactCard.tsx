@@ -337,6 +337,7 @@ const ContactCard: React.FC = () => {
                           <span className="font-bold text-white text-center block leading-tight relative z-10 group-hover:drop-shadow-lg transition-all duration-200 flex items-center justify-center h-full">
                             fecha
                           </span>
+                          </span>
                         </button>
                       </a>
                     )}
