@@ -67,7 +67,7 @@ const ContactActions: React.FC<ContactActionsProps> = ({ employee, language }) =
           variant="primary"
         >
           {TEXT_CONTENT[language].saveContact}<br />
-          {TEXT_CONTENT[language].saveContactSub}
+          {TEXT_CONTENT[language].saveContactSub && TEXT_CONTENT[language].saveContactSub}
         </ActionButton>
         
         {employee.calendly && (

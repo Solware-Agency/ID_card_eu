@@ -99,8 +99,8 @@ export const ELEMENT_STYLES = {
 // Text content
 export const TEXT_CONTENT = {
   es: {
-    saveContact: 'Guardar',
-    saveContactSub: 'contacto',
+    saveContact: 'Guardar contacto',
+    saveContactSub: '',
     scheduleMeeting: 'Pongamos',
     scheduleMeetingSub: 'fecha',
     notFound: 'Contacto no encontrado',
@@ -108,8 +108,8 @@ export const TEXT_CONTENT = {
     languageToggle: 'Cambiar idioma'
   },
   en: {
-    saveContact: 'Save',
-    saveContactSub: 'contact', 
+    saveContact: 'Save contact',
+    saveContactSub: '',
     scheduleMeeting: "Let's set",
     scheduleMeetingSub: 'a date',
     notFound: 'Contact not found',
