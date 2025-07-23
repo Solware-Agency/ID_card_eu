@@ -244,7 +244,7 @@ const ContactCard: React.FC = () => {
               <p className="text-blue-100 mb-1">
                 {employee.title[language]}
               </p>
-              <p className="text-blue-200 text-sm">
+              <p className="text-blue-200 text-sm text-center">
                 {employee.company[language]}
               </p>
             </div>
