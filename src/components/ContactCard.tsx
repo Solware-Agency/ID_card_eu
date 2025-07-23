@@ -242,9 +242,9 @@ const ContactCard: React.FC = () => {
                   onClick={() => handleAction('click_save_contact')}
                   variant="primary"
                   className="flex-1 min-w-0"
-                  ariaLabel={`Descargar información de contacto de ${employee.name}`}
+                  ariaLabel={`Conectar con ${employee.name}`}
                 >
-                  MI CONTACTO
+                  Conecta conmigo
                 </ActionButton>
                 {employee.calendly && (
                   <ActionButton
@@ -254,11 +254,11 @@ const ContactCard: React.FC = () => {
                     onClick={() => handleAction('click_agendar')}
                     variant="secondary"
                     className="flex-1 min-w-0"
-                    ariaLabel={`Programar una reunión con ${employee.name}`}
+                    ariaLabel={`Programar una cita con ${employee.name}`}
                   >
                     <div className="flex items-center justify-center gap-2">
                       <Calendar size={20} />
-                      REUNÁMONOS
+                      Pongamos fecha
                     </div>
                   </ActionButton>
                 )}
