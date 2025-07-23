@@ -205,11 +205,11 @@ const ContactCard: React.FC = () => {
                 <img 
                   src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Equipo/Eugenio.png"
                   alt={employee.name}
-                  className="w-full h-full object-cover rounded-full"
+                  className="w-full h-full object-cover"
                 />
               </div>
               {/* Name and title */}
-              <div className="text-center">
+              <div className="text-center w-full">
                 <BlurText
                   text={employee.name}
                   delay={400}
@@ -245,10 +245,10 @@ const ContactCard: React.FC = () => {
                   ]}
                   className="text-2xl font-bold text-white mb-4"
                 />
-                <p className="text-blue-100 mb-1 text-sm sm:text-base px-2">
+                <p className="text-blue-100 mb-1 text-sm sm:text-base px-2 text-center">
                   {employee.title[language]}
                 </p>
-                <p className="text-blue-200 text-xs sm:text-sm px-2">
+                <p className="text-blue-200 text-xs sm:text-sm px-2 text-center">
                   {employee.company[language]}
                 </p>
               </div>
@@ -276,17 +276,17 @@ const ContactCard: React.FC = () => {
 
               {/* Action buttons section */}
               <div className="mt-4 sm:mt-6 px-1 sm:px-2">
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center w-full">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full">
                   <a
                     href={`/vcf/${employee.slug}.vcf`}
                     download
                     onClick={() => handleAction('click_save_contact')}
-                    className="w-full sm:flex-1 sm:min-w-0 sm:max-w-xs"
+                    className="w-full sm:flex-1 sm:min-w-0 sm:max-w-48"
                     aria-label={`Guardar contacto de ${employee.name}`}
                   >
-                    <button className="group relative overflow-hidden rounded-full bg-blue-600 px-8 sm:px-12 py-4 sm:py-5 text-base sm:text-lg transition-all w-full">
+                    <button className="group relative overflow-hidden rounded-full bg-blue-600 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full">
                       <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/15 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                      <span className="font-semibold text-white text-center block leading-tight">Conecta<br />conmigo</span>
+                      <span className="font-semibold text-white text-center block leading-tight mx-auto">Conecta<br />conmigo</span>
                     </button>
                   </a>
                   {employee.calendly && (
@@ -295,12 +295,12 @@ const ContactCard: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => handleAction('click_schedule')}
-                      className="w-full sm:flex-1 sm:min-w-0 sm:max-w-xs"
+                      className="w-full sm:flex-1 sm:min-w-0 sm:max-w-48"
                       aria-label={`Programar una cita con ${employee.name}`}
                     >
-                      <button className="group relative overflow-hidden rounded-full bg-white border-2 border-blue-600 px-8 sm:px-12 py-4 sm:py-5 text-base sm:text-lg transition-all w-full">
+                      <button className="group relative overflow-hidden rounded-full bg-white border-2 border-blue-600 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full">
                         <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-blue-600/15 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                        <span className="font-semibold text-blue-600 text-center block leading-tight">Agendar<br />reunión</span>
+                        <span className="font-semibold text-blue-600 text-center block leading-tight mx-auto">Agendar<br />reunión</span>
                       </div>
                     </a>
                   )}
