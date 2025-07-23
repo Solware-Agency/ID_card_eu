@@ -256,10 +256,7 @@ const ContactCard: React.FC = () => {
                     className="flex-1 min-w-0"
                     ariaLabel={`Programar una cita con ${employee.name}`}
                   >
-                    <div className="flex items-center justify-center gap-2">
-                      <Calendar size={20} />
-                      Pongamos fecha
-                    </div>
+                    Pongamos fecha
                   </ActionButton>
                 )}
               </div>
