@@ -210,7 +210,7 @@ const ContactCard: React.FC = () => {
                 />
               </div>
               {/* Name and title */}
-              <div className="text-center w-full">
+              <div className="text-center w-full flex justify-center">
                 <BlurText
                   text={employee.name}
                   delay={400}
@@ -244,8 +244,10 @@ const ContactCard: React.FC = () => {
                       scale: 1
                     }
                   ]}
-                  className="text-2xl font-bold text-white mb-4"
+                  className="text-2xl font-bold text-white mb-4 text-center"
                 />
+              </div>
+              <div className="text-center w-full">
                 <p className="text-blue-100 mb-1 text-sm sm:text-base px-2 text-center">
                   {employee.title[language]}
                 </p>
