@@ -51,20 +51,22 @@ const ContactCard: React.FC = () => {
     target?: string;
     rel?: string;
     className?: string;
-    variant?: 'primary' | 'secondary' | 'success' | 'social' | 'language';
+    variant?: 'primary' | 'secondary' | 'success' | 'social' | 'language' | 'solware';
     ariaLabel?: string;
   }> = ({ icon, onClick, href, target, rel, className = '', variant = 'primary', ariaLabel }) => {
-    const baseClasses = "w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300";
+    const baseClasses = "w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-md";
     
     const variantClasses = {
       primary: "bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white shadow-md hover:shadow-lg",
       secondary: "bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 active:bg-blue-100 shadow-md hover:shadow-lg",
       success: "bg-green-500 hover:bg-green-600 active:bg-green-700 text-white shadow-md hover:shadow-lg",
       social: "bg-blue-700 hover:bg-blue-800 active:bg-blue-900 text-white shadow-md hover:shadow-lg",
+      solware: "bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 active:from-blue-700 active:to-blue-900 text-white shadow-md hover:shadow-lg",
+      solware: "bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 active:from-blue-700 active:to-blue-900 text-white shadow-md hover:shadow-lg",
       language: "bg-white bg-opacity-20 backdrop-blur-sm text-white hover:bg-opacity-30 active:bg-opacity-40 border-0 !w-10 !h-10 !rounded-xl focus:ring-white focus:ring-opacity-50"
     };
 
-    const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${className}`.replace('h-16', className.includes('row-span-2') ? 'h-36' : 'h-16');
+    const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
 
     if (href) {
       return (
@@ -138,34 +140,17 @@ const ContactCard: React.FC = () => {
       href: `mailto:${employee.email}`,
       action: 'click_email',
       variant: 'primary' as const,
-      ariaLabel: `Enviar correo electrónico a ${employee.name}`
+      ariaLabel: `Enviar correo electrónico a ${employee.name}`,
+      label: 'Correo'
     },
     {
       icon: <Phone size={24} />,
       href: `tel:${formatPhoneForCall(employee.phone)}`,
       action: 'click_call',
       variant: 'primary' as const,
-      ariaLabel: `Llamar a ${employee.name} al ${employee.phone}`
+      ariaLabel: `Llamar a ${employee.name} al ${employee.phone}`,
+      label: 'Teléfono'
     },
-    ...(employee.website ? [{
-      icon: <img src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Logos/Svg/Logo_Blanco_Solware.svg" alt="Solware" className="w-12 h-12" />,
-      href: `https://${employee.website}`,
-      target: '_blank',
-      rel: 'noopener noreferrer',
-      action: 'click_social',
-      variant: 'primary' as const,
-      className: 'col-span-1 row-span-2',
-      ariaLabel: `Visitar sitio web de ${employee.company[language]}`
-    }] : []),
-    ...(employee.linkedin ? [{
-      icon: <Linkedin size={24} />,
-      href: `https://linkedin.com/in/${employee.linkedin}`,
-      target: '_blank',
-      rel: 'noopener noreferrer',
-      action: 'click_social',
-      variant: 'social' as const,
-      ariaLabel: `Ver perfil de LinkedIn de ${employee.name}`
-    }] : []),
     {
       icon: <MessageCircle size={24} />,
       href: `https://wa.me/${employee.whatsapp}`,
@@ -173,8 +158,29 @@ const ContactCard: React.FC = () => {
       rel: 'noopener noreferrer',
       action: 'click_whatsapp',
       variant: 'success' as const,
-      ariaLabel: `Enviar mensaje de WhatsApp a ${employee.name}`
-    }
+      ariaLabel: `Enviar mensaje de WhatsApp a ${employee.name}`,
+      label: 'WhatsApp'
+    },
+    ...(employee.linkedin ? [{
+      icon: <Linkedin size={24} />,
+      href: `https://linkedin.com/in/${employee.linkedin}`,
+      target: '_blank',
+      rel: 'noopener noreferrer',
+      action: 'click_social',
+      variant: 'social' as const,
+      ariaLabel: `Ver perfil de LinkedIn de ${employee.name}`,
+      label: 'LinkedIn'
+    }] : []),
+    ...(employee.website ? [{
+      icon: <img src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Logos/Svg/Logo_Blanco_Solware.svg" alt="Solware" className="w-8 h-8" />,
+      href: `https://${employee.website}`,
+      target: '_blank',
+      rel: 'noopener noreferrer',
+      action: 'click_social',
+      variant: 'solware' as const,
+      ariaLabel: `Visitar sitio web de ${employee.company[language]}`,
+      label: 'Solware'
+    }] : []),
   ];
 
   return (
@@ -215,9 +221,9 @@ const ContactCard: React.FC = () => {
 
           {/* Contact section */}
           <div className="p-8 space-y-8">
-            {/* Icon grid section - 2 columns, up to 3 rows */}
+            {/* Icon grid section - 5 circular buttons */}
             <div>
-              <div className="grid grid-cols-3 grid-rows-2 gap-2 justify-items-center">
+              <div className="grid grid-cols-5 gap-4 justify-items-center">
                 {contactOptions.map((option, index) => (
                   <IconButton
                     key={index}
@@ -227,7 +233,6 @@ const ContactCard: React.FC = () => {
                     rel={option.rel}
                     onClick={() => handleAction(option.action)}
                     variant={option.variant}
-                    className={option.className}
                     ariaLabel={option.ariaLabel}
                   />
                 ))}
