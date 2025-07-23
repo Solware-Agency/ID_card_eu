@@ -109,7 +109,7 @@ export const TEXT_CONTENT = {
   },
   en: {
     saveContact: 'Save',
-    saveContactSub: 'contact',
+    saveContactSub: 'contact', 
     scheduleMeeting: "Let's set",
     scheduleMeetingSub: 'a date',
     notFound: 'Contact not found',
