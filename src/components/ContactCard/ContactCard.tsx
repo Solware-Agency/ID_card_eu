@@ -41,16 +41,13 @@ const ContactCard: React.FC = () => {
           >
             {/* Glassmorphism card */}
             <div 
-              className="backdrop-blur-2xl bg-white/25 shadow-2xl relative border-4 border-solid border-white/80 rounded-3xl"
+              className="backdrop-blur-2xl bg-white/25 shadow-2xl relative rounded-3xl"
               style={{
                 backdropFilter: BLUR_EFFECTS.CARD_BLUR,
-                WebkitBackdropFilter: BLUR_EFFECTS.WEBKIT_BLUR
+                WebkitBackdropFilter: BLUR_EFFECTS.WEBKIT_BLUR,
+                boxShadow: 'inset 0 0 0 3px rgba(255, 255, 255, 0.8), 0 25px 50px -12px rgba(0, 0, 0, 0.25)'
               }}
             >
-              {/* Refuerzo del borde con pseudo-elemento para esquinas sólidas */}
-              <div className="absolute inset-0 rounded-3xl border-2 border-solid border-white/60 pointer-events-none"></div>
-              <div className="absolute inset-1 rounded-3xl border border-solid border-white/40 pointer-events-none"></div>
-              
               <ContactHeader 
                 employee={employee}
                 language={language}
@@ -58,7 +55,9 @@ const ContactCard: React.FC = () => {
               />
 
               {/* Contact section */}
-              <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8 bg-white/10 backdrop-blur-sm border-t-2 border-solid border-white/50">
+              <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8 bg-white/10 backdrop-blur-sm relative">
+                {/* Línea separadora */}
+                <div className="absolute top-0 left-3 right-3 h-0.5 bg-white/50"></div>
                 <ContactIcons employee={employee} />
                 <ContactActions employee={employee} language={language} />
               </div>

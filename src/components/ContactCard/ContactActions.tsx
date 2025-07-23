@@ -23,9 +23,12 @@ const ContactActions: React.FC<ContactActionsProps> = ({ employee, language }) =
           aria-label={`Guardar contacto de ${employee.name}`}
         >
           <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 backdrop-blur-sm border-4 border-solid border-white/80 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-xl hover:shadow-2xl hover:from-indigo-500 hover:to-purple-500">
-            {/* Refuerzo del borde del botón principal para esquinas sólidas */}
-            <div className="absolute inset-0 rounded-full border-2 border-solid border-white/60 pointer-events-none"></div>
-            <div className="absolute inset-1 rounded-full border border-solid border-white/40 pointer-events-none"></div>
+          <button 
+            className="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 backdrop-blur-sm px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full hover:from-indigo-500 hover:to-purple-500"
+            style={{
+              boxShadow: 'inset 0 0 0 3px rgba(255, 255, 255, 0.8), 0 20px 25px -5px rgba(0, 0, 0, 0.1)'
+            }}
+          >
             <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/30 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
             <span className="font-bold text-white text-center block leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-200">
               {language === 'es' ? 'Guardar' : 'Save'}<br />
@@ -43,10 +46,12 @@ const ContactActions: React.FC<ContactActionsProps> = ({ employee, language }) =
             className="w-full sm:flex-1 sm:min-w-0 sm:max-w-48"
             aria-label={`Programar una cita con ${employee.name}`}
           >
-            <button className="group relative overflow-hidden rounded-full bg-slate-800/30 backdrop-blur-sm border-3 border-solid border-white/70 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-lg hover:shadow-xl hover:bg-slate-700/40">
-              {/* Refuerzo del borde del botón secundario para esquinas sólidas */}
-              <div className="absolute inset-0 rounded-full border-2 border-solid border-white/50 pointer-events-none"></div>
-              <div className="absolute inset-1 rounded-full border border-solid border-white/30 pointer-events-none"></div>
+            <button 
+              className="group relative overflow-hidden rounded-full bg-slate-800/30 backdrop-blur-sm px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full hover:bg-slate-700/40"
+              style={{
+                boxShadow: 'inset 0 0 0 2px rgba(255, 255, 255, 0.7), 0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+              }}
+            >
               <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-indigo-500/25 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
               <span className="font-medium text-white/90 group-hover:text-white text-center block leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-300">
                 {language === 'es' ? 'Pongamos' : 'Let\'s set'}<br />
