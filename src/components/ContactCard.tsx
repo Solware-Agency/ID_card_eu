@@ -301,7 +301,7 @@ const ContactCard: React.FC = () => {
                       <button className="group relative overflow-hidden rounded-full bg-white border-2 border-blue-600 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full">
                         <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-blue-600/15 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
                         <span className="font-semibold text-blue-600 text-center block leading-tight mx-auto">Agendar<br />reunión</span>
-                      </div>
+                      </button>
                     </a>
                   )}
                 </div>
