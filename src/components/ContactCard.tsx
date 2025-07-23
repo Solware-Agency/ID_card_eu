@@ -234,38 +234,33 @@ const ContactCard: React.FC = () => {
             </div>
 
             {/* Action buttons section */}
-            {/* Action buttons section - Always horizontal row */}
-            <div className="mt-8">
-              <div className="flex gap-4 w-full">
-                <div className="flex-1">
-                  <ActionButton
-                    href={`/vcf/${employee.slug}.vcf`}
-                    download
-                    onClick={() => handleAction('click_save_contact')}
-                    variant="primary"
-                    className="w-full"
-                    ariaLabel={`Descargar información de contacto de ${employee.name}`}
-                  >
-                    MI CONTACTO
-                  </ActionButton>
-                </div>
+            <div className="mt-6 px-2">
+              <div className="flex flex-row gap-4 justify-center items-center w-full">
+                <ActionButton
+                  href={`/vcf/${employee.slug}.vcf`}
+                  download
+                  onClick={() => handleAction('click_save_contact')}
+                  variant="primary"
+                  className="flex-1 min-w-0"
+                  ariaLabel={`Descargar información de contacto de ${employee.name}`}
+                >
+                  MI CONTACTO
+                </ActionButton>
                 {employee.calendly && (
-                  <div className="flex-1">
-                    <ActionButton
-                      href={employee.calendly}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => handleAction('click_agendar')}
-                      variant="secondary"
-                      className="w-full"
-                      ariaLabel={`Programar una reunión con ${employee.name}`}
-                    >
-                      <div className="flex items-center justify-center gap-2">
-                        <Calendar size={20} />
-                        REUNÁMONOS
-                      </div>
-                    </ActionButton>
-                  </div>
+                  <ActionButton
+                    href={employee.calendly}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => handleAction('click_agendar')}
+                    variant="secondary"
+                    className="flex-1 min-w-0"
+                    ariaLabel={`Programar una reunión con ${employee.name}`}
+                  >
+                    <div className="flex items-center justify-center gap-2">
+                      <Calendar size={20} />
+                      REUNÁMONOS
+                    </div>
+                  </ActionButton>
                 )}
               </div>
             </div>
