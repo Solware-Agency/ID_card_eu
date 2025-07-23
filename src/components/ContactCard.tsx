@@ -201,53 +201,57 @@ const ContactCard: React.FC = () => {
               </div>
 
               {/* Profile initials circle */}
-              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-white border-opacity-30">
-                <span className="text-4xl sm:text-5xl font-bold text-white">
-                  {getInitials(employee.name)}
-                </span>
+              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-white border-opacity-30 overflow-hidden">
+                <img 
+                  src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Equipo/Eugenio.png"
+                  alt={employee.name}
+                  className="w-full h-full object-cover rounded-full"
+                />
               </div>
               {/* Name and title */}
-              <BlurText
-                text={employee.name}
-                delay={400}
-                animateBy="words"
-                direction="top"
-                stepDuration={0.8}
-                threshold={0.05}
-                animationFrom={{ 
-                  filter: "blur(15px)", 
-                  opacity: 0, 
-                  y: -30,
-                  scale: 0.9
-                }}
-                animationTo={[
-                  { 
-                    filter: "blur(8px)", 
-                    opacity: 0.3, 
-                    y: -10,
-                    scale: 0.95
-                  },
-                  { 
-                    filter: "blur(3px)", 
-                    opacity: 0.7, 
-                    y: -2,
-                    scale: 0.98
-                  },
-                  { 
-                    filter: "blur(0px)", 
-                    opacity: 1, 
-                    y: 0,
-                    scale: 1
-                  }
-                ]}
-                className="text-2xl font-bold text-white mb-4 text-center"
-              />
-              <p className="text-blue-100 mb-1 text-sm sm:text-base px-2">
-                {employee.title[language]}
-              </p>
-              <p className="text-blue-200 text-xs sm:text-sm text-center px-2">
-                {employee.company[language]}
-              </p>
+              <div className="text-center">
+                <BlurText
+                  text={employee.name}
+                  delay={400}
+                  animateBy="words"
+                  direction="top"
+                  stepDuration={0.8}
+                  threshold={0.05}
+                  animationFrom={{ 
+                    filter: "blur(15px)", 
+                    opacity: 0, 
+                    y: -30,
+                    scale: 0.9
+                  }}
+                  animationTo={[
+                    { 
+                      filter: "blur(8px)", 
+                      opacity: 0.3, 
+                      y: -10,
+                      scale: 0.95
+                    },
+                    { 
+                      filter: "blur(3px)", 
+                      opacity: 0.7, 
+                      y: -2,
+                      scale: 0.98
+                    },
+                    { 
+                      filter: "blur(0px)", 
+                      opacity: 1, 
+                      y: 0,
+                      scale: 1
+                    }
+                  ]}
+                  className="text-2xl font-bold text-white mb-4"
+                />
+                <p className="text-blue-100 mb-1 text-sm sm:text-base px-2">
+                  {employee.title[language]}
+                </p>
+                <p className="text-blue-200 text-xs sm:text-sm px-2">
+                  {employee.company[language]}
+                </p>
+              </div>
             </div>
 
             {/* Contact section */}
@@ -272,17 +276,17 @@ const ContactCard: React.FC = () => {
 
               {/* Action buttons section */}
               <div className="mt-4 sm:mt-6 px-1 sm:px-2">
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center w-full">
                   <a
                     href={`/vcf/${employee.slug}.vcf`}
                     download
                     onClick={() => handleAction('click_save_contact')}
-                    className="w-full sm:flex-1 sm:min-w-0"
+                    className="w-full sm:flex-1 sm:min-w-0 sm:max-w-xs"
                     aria-label={`Guardar contacto de ${employee.name}`}
                   >
-                    <div className="group relative overflow-hidden rounded-full bg-blue-600 px-6 sm:px-14 py-3 sm:py-4 text-sm sm:text-lg transition-all w-full">
+                    <button className="group relative overflow-hidden rounded-full bg-blue-600 px-8 sm:px-12 py-4 sm:py-5 text-base sm:text-lg transition-all w-full">
                       <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/15 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                      <span className="font-semibold text-white text-center block">Conecta conmigo</span>
+                      <span className="font-semibold text-white text-center block leading-tight">Conecta<br />conmigo</span>
                     </div>
                   </a>
                   {employee.calendly && (
@@ -291,12 +295,12 @@ const ContactCard: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => handleAction('click_schedule')}
-                      className="w-full sm:flex-1 sm:min-w-0"
+                      className="w-full sm:flex-1 sm:min-w-0 sm:max-w-xs"
                       aria-label={`Programar una cita con ${employee.name}`}
                     >
-                      <div className="group relative overflow-hidden rounded-full bg-white border-2 border-blue-600 px-6 sm:px-14 py-3 sm:py-4 text-sm sm:text-lg transition-all w-full">
+                      <button className="group relative overflow-hidden rounded-full bg-white border-2 border-blue-600 px-8 sm:px-12 py-4 sm:py-5 text-base sm:text-lg transition-all w-full">
                         <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-blue-600/15 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                        <span className="font-semibold text-blue-600 text-center block">Agendar reunión</span>
+                        <span className="font-semibold text-blue-600 text-center block leading-tight">Agendar<br />reunión</span>
                       </div>
                     </a>
                   )}
