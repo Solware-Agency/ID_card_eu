@@ -181,16 +181,16 @@ const ContactCard: React.FC = () => {
     <div className="fixed inset-0 overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         {/* Animated colorful background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-500">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-slate-800 to-indigo-900">
           {/* Floating abstract shapes */}
-          <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-72 h-72 bg-gradient-to-r from-yellow-400 to-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-40 w-72 h-72 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse animation-delay-4000"></div>
-          <div className="absolute bottom-20 right-40 w-96 h-96 bg-gradient-to-r from-green-400 to-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-pulse animation-delay-1000"></div>
+          <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-indigo-600/40 to-purple-600/40 rounded-full mix-blend-screen filter blur-xl opacity-50 animate-pulse"></div>
+          <div className="absolute top-40 right-20 w-72 h-72 bg-gradient-to-r from-violet-600/40 to-blue-600/40 rounded-full mix-blend-screen filter blur-xl opacity-50 animate-pulse animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-40 w-72 h-72 bg-gradient-to-r from-blue-600/40 to-indigo-600/40 rounded-full mix-blend-screen filter blur-xl opacity-50 animate-pulse animation-delay-4000"></div>
+          <div className="absolute bottom-20 right-40 w-96 h-96 bg-gradient-to-r from-slate-600/30 to-indigo-600/40 rounded-full mix-blend-screen filter blur-xl opacity-40 animate-pulse animation-delay-1000"></div>
           
           {/* Aurora-like overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-transparent via-purple-500/20 to-transparent animate-pulse"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent animate-pulse animation-delay-3000"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-transparent via-indigo-500/10 to-transparent animate-pulse"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-violet-500/10 to-transparent animate-pulse animation-delay-3000"></div>
         </div>
         
       </div>
@@ -214,7 +214,7 @@ const ContactCard: React.FC = () => {
               }}
             >
               {/* Header with gradient background */}
-              <div className="bg-gradient-to-br from-blue-600/80 to-blue-800/80 backdrop-blur-sm p-4 sm:p-6 text-center relative border-b border-white/10">
+              <div className="bg-gradient-to-br from-slate-800/90 to-indigo-900/90 backdrop-blur-sm p-4 sm:p-6 text-center relative border-b border-white/10">
                 {/* Language toggle - top right */}
                 <div className="absolute top-4 right-4">
                   <IconButton
@@ -226,7 +226,7 @@ const ContactCard: React.FC = () => {
                 </div>
 
                 {/* Profile initials circle */}
-                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-white/40 overflow-hidden shadow-lg">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-indigo-400/30 overflow-hidden shadow-lg">
                   <img 
                     src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Equipo/Eugenio.png"
                     alt={employee.name}
@@ -292,7 +292,7 @@ const ContactCard: React.FC = () => {
                       target={option.target}
                       rel={option.rel}
                       onClick={() => handleAction(option.action)}
-                      className="group relative flex flex-col items-center justify-center bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 border border-white/20"
+                      className="group relative flex flex-col items-center justify-center bg-slate-800/40 hover:bg-slate-700/50 backdrop-blur-sm rounded-full w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 border border-indigo-400/20"
                       aria-label={option.ariaLabel}
                     >
                       <div className="text-white/90 group-hover:text-white transition-colors duration-200">
@@ -315,9 +315,9 @@ const ContactCard: React.FC = () => {
                       className="w-full sm:flex-1 sm:min-w-0 sm:max-w-48"
                       aria-label={`Guardar contacto de ${employee.name}`}
                     >
-                      <button className="group relative overflow-hidden rounded-full bg-blue-600/80 backdrop-blur-sm border border-blue-400/30 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-lg hover:shadow-xl">
-                        <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/15 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                        <span className="font-semibold text-white text-center block leading-tight mx-auto">
+                      <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 backdrop-blur-sm border border-indigo-400/50 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-xl hover:shadow-2xl hover:from-indigo-500 hover:to-purple-500">
+                        <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/20 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
+                        <span className="font-bold text-white text-center block leading-tight mx-auto relative z-10">
                           {language === 'es' ? 'Conecta' : 'Connect'}<br />
                           {language === 'es' ? 'conmigo' : 'with me'}
                         </span>
@@ -332,9 +332,9 @@ const ContactCard: React.FC = () => {
                         className="w-full sm:flex-1 sm:min-w-0 sm:max-w-48"
                         aria-label={`Programar una cita con ${employee.name}`}
                       >
-                        <button className="group relative overflow-hidden rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/40 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-lg hover:shadow-xl">
-                          <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-blue-600/15 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                          <span className="font-semibold text-white text-center block leading-tight mx-auto">
+                        <button className="group relative overflow-hidden rounded-full bg-slate-800/30 backdrop-blur-sm border-2 border-slate-600/40 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-lg hover:shadow-xl hover:bg-slate-700/40">
+                          <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-indigo-600/20 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
+                          <span className="font-medium text-white/90 text-center block leading-tight mx-auto relative z-10">
                             {language === 'es' ? 'Agendar' : 'Schedule'}<br />
                             {language === 'es' ? 'reunión' : 'meeting'}
                           </span>
