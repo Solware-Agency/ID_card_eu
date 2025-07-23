@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Mail, Phone, MessageCircle, Linkedin, Globe, Calendar, Download, Globe2 } from 'lucide-react';
 import BlurText from './BlurText';
 import FadeContent from './FadeContent';
-import StarBorder from './StarBorder';
+import WorkButton from '../../components/animata/button/work-button';
 import { getEmployeeBySlug } from '../data/empleados';
 import { trackEvent } from '../utils/analytics';
 import type { Language } from '../types';
@@ -273,42 +273,32 @@ const ContactCard: React.FC = () => {
               {/* Action buttons section */}
               <div className="mt-4 sm:mt-6 px-1 sm:px-2">
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full">
-                  <StarBorder
-                    as="div"
+                  <a
+                    href={`/vcf/${employee.slug}.vcf`}
+                    download
+                    onClick={() => handleAction('click_save_contact')}
                     className="w-full sm:flex-1 sm:min-w-0"
-                    color="#2563eb"
-                    speed="5s"
+                    aria-label={`Guardar contacto de ${employee.name}`}
                   >
-                    <ActionButton
-                      href={`/vcf/${employee.slug}.vcf`}
-                      download
-                      onClick={() => handleAction('click_save_contact')}
-                      variant="primary"
-                      className="w-full"
-                      ariaLabel={`Guardar contacto de ${employee.name}`}
-                    >
-                      GUARDAR CONTACTO
-                    </ActionButton>
-                  </StarBorder>
+                    <div className="group relative overflow-hidden rounded-full bg-blue-600 px-6 sm:px-14 py-3 sm:py-4 text-sm sm:text-lg transition-all w-full">
+                      <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/15 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
+                      <span className="font-semibold text-white text-center block">Conecta conmigo</span>
+                    </div>
+                  </a>
                   {employee.calendly && (
-                    <StarBorder
-                      as="div"
+                    <a
+                      href={employee.calendly}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => handleAction('click_schedule')}
                       className="w-full sm:flex-1 sm:min-w-0"
-                      color="#2563eb"
-                      speed="5s"
+                      aria-label={`Programar una cita con ${employee.name}`}
                     >
-                      <ActionButton
-                        href={employee.calendly}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => handleAction('click_schedule')}
-                        variant="secondary"
-                        className="w-full"
-                        ariaLabel={`Programar una cita con ${employee.name}`}
-                      >
-                        AGENDAR REUNIÓN
-                      </ActionButton>
-                    </StarBorder>
+                      <div className="group relative overflow-hidden rounded-full bg-white border-2 border-blue-600 px-6 sm:px-14 py-3 sm:py-4 text-sm sm:text-lg transition-all w-full">
+                        <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-blue-600/15 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
+                        <span className="font-semibold text-blue-600 text-center block">Agendar reunión</span>
+                      </div>
+                    </a>
                   )}
                 </div>
               </div>
