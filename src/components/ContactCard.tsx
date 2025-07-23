@@ -317,8 +317,8 @@ const ContactCard: React.FC = () => {
                     >
                       <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 backdrop-blur-sm border border-indigo-400/50 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-xl hover:shadow-2xl hover:from-indigo-500 hover:to-purple-500">
                         <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/30 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                        <span className="font-bold text-white text-center block leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-200">
-                          Guardar contacto
+                          Pongamos<br />
+                          fecha
                         </span>
                       </button>
                     </a>
