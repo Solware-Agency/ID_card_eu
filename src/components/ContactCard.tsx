@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Mail, Phone, MessageCircle, Linkedin, Globe, Calendar, Download, Globe2 } from 'lucide-react';
+import BlurText from './BlurText';
 import { getEmployeeBySlug } from '../data/empleados';
 import { trackEvent } from '../utils/analytics';
 import type { Language } from '../types';
