@@ -29,9 +29,10 @@ const ContactHeader: React.FC<ContactHeaderProps> = ({
       </div>
 
       {/* Profile photo */}
-      <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-white/60 overflow-hidden shadow-lg relative">
-        {/* Refuerzo del borde del avatar */}
-        <div className="absolute inset-0 rounded-full border-2 border-white/40 pointer-events-none"></div>
+      <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-solid border-white/80 overflow-hidden shadow-lg relative">
+        {/* Refuerzo del borde del avatar para esquinas sólidas */}
+        <div className="absolute inset-0 rounded-full border-2 border-solid border-white/60 pointer-events-none"></div>
+        <div className="absolute inset-1 rounded-full border border-solid border-white/40 pointer-events-none"></div>
         <img 
           src={IMAGES.EMPLOYEE_PHOTO}
           alt={employee.name}
