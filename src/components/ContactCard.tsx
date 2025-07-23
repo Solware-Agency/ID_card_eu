@@ -335,7 +335,7 @@ const ContactCard: React.FC = () => {
                           <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-indigo-500/25 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
                           <span className="font-medium text-white/90 group-hover:text-white text-center block leading-tight relative z-10 group-hover:drop-shadow-lg transition-all duration-300 flex items-center justify-center h-full">
                           <span className="font-bold text-white text-center block leading-tight relative z-10 group-hover:drop-shadow-lg transition-all duration-200 flex items-center justify-center h-full">
-                            fecha
+                            Pongamos<br />fecha
                           </span>
                           </span>
                         </button>
