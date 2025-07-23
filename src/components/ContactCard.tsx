@@ -268,17 +268,17 @@ const ContactCard: React.FC = () => {
                   />
                 </div>
                 <div className="text-center w-full">
-                  <p className="text-blue-100 mb-1 text-sm sm:text-base px-2 text-center">
+                  <p className="text-white/90 mb-1 text-sm sm:text-base px-2 text-center font-medium">
                     {employee.title[language]}
                   </p>
-                  <p className="text-blue-200 text-xs sm:text-sm px-2 text-center">
+                  <p className="text-white/80 text-xs sm:text-sm px-2 text-center">
                     {employee.company[language]}
                   </p>
                 </div>
               </div>
 
               {/* Contact section */}
-              <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8">
+              <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8 bg-white/10 backdrop-blur-sm">
                 {/* Horizontal action buttons section */}
                 <div className="flex justify-center items-center gap-4 my-6">
                   {contactOptions.map((option, index) => (
@@ -288,10 +288,10 @@ const ContactCard: React.FC = () => {
                       target={option.target}
                       rel={option.rel}
                       onClick={() => handleAction(option.action)}
-                      className="group relative flex flex-col items-center justify-center bg-neutral-800 hover:bg-neutral-700 rounded-full w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110 active:scale-95"
+                      className="group relative flex flex-col items-center justify-center bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 border border-white/20"
                       aria-label={option.ariaLabel}
                     >
-                      <div className="text-white group-hover:text-white transition-colors duration-200">
+                      <div className="text-white/90 group-hover:text-white transition-colors duration-200">
                         {React.cloneElement(option.icon as React.ReactElement, {
                           size: 20,
                           className: "sm:w-6 sm:h-6"
@@ -311,7 +311,7 @@ const ContactCard: React.FC = () => {
                       className="w-full sm:flex-1 sm:min-w-0 sm:max-w-48"
                       aria-label={`Guardar contacto de ${employee.name}`}
                     >
-                      <button className="group relative overflow-hidden rounded-full bg-blue-600 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full">
+                      <button className="group relative overflow-hidden rounded-full bg-blue-600/80 backdrop-blur-sm border border-blue-400/30 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-lg hover:shadow-xl">
                         <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/15 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
                         <span className="font-semibold text-white text-center block leading-tight mx-auto">
                           {language === 'es' ? 'Conecta' : 'Connect'}<br />
@@ -328,9 +328,9 @@ const ContactCard: React.FC = () => {
                         className="w-full sm:flex-1 sm:min-w-0 sm:max-w-48"
                         aria-label={`Programar una cita con ${employee.name}`}
                       >
-                        <button className="group relative overflow-hidden rounded-full bg-white border-2 border-blue-600 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full">
+                        <button className="group relative overflow-hidden rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/40 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-lg hover:shadow-xl">
                           <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-blue-600/15 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                          <span className="font-semibold text-blue-600 text-center block leading-tight mx-auto">
+                          <span className="font-semibold text-white text-center block leading-tight mx-auto">
                             {language === 'es' ? 'Agendar' : 'Schedule'}<br />
                             {language === 'es' ? 'reunión' : 'meeting'}
                           </span>
