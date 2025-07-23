@@ -22,7 +22,6 @@ const ContactActions: React.FC<ContactActionsProps> = ({ employee, language }) =
           className="w-full sm:flex-1 sm:min-w-0 sm:max-w-48"
           aria-label={`Guardar contacto de ${employee.name}`}
         >
-          <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 backdrop-blur-sm border-4 border-solid border-white/80 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-xl hover:shadow-2xl hover:from-indigo-500 hover:to-purple-500">
           <button 
             className="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 backdrop-blur-sm px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full hover:from-indigo-500 hover:to-purple-500"
             style={{
