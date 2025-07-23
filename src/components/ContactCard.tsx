@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Mail, Phone, MessageCircle, Linkedin, Globe, Calendar, Download, Globe2 } from 'lucide-react';
 import BlurText from './BlurText';
+import FadeContent from './FadeContent';
 import { getEmployeeBySlug } from '../data/empleados';
 import { trackEvent } from '../utils/analytics';
 import type { Language } from '../types';
@@ -178,89 +179,97 @@ const ContactCard: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
       <div className="max-w-sm w-full">
-        {/* Main card */}
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden relative">
-          {/* Header with gradient background */}
-          <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-6 text-center relative">
-            {/* Language toggle - top right */}
-            <div className="absolute top-4 right-4">
-              <IconButton
-                icon={<Globe2 size={16} />}
-                onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
-                variant="language"
-                ariaLabel={`Cambiar idioma a ${language === 'es' ? 'inglés' : 'español'}`}
+        <FadeContent 
+          blur={true} 
+          duration={1000} 
+          easing="ease-out" 
+          initialOpacity={0}
+          className="bg-white rounded-3xl shadow-2xl overflow-hidden relative"
+        >
+          {/* Main card */}
+          <div>
+            {/* Header with gradient background */}
+            <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-6 text-center relative">
+              {/* Language toggle - top right */}
+              <div className="absolute top-4 right-4">
+                <IconButton
+                  icon={<Globe2 size={16} />}
+                  onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
+                  variant="language"
+                  ariaLabel={`Cambiar idioma a ${language === 'es' ? 'inglés' : 'español'}`}
+                />
+              </div>
+
+              {/* Profile initials circle */}
+              <div className="w-24 h-24 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-white border-opacity-30">
+                <span className="text-5xl font-bold text-white">
+              {/* Name and title */}
+              <BlurText
+                text={employee.name}
+                delay={150}
+                animateBy="words"
+                direction="top"
+                className="text-2xl font-bold text-white mb-4 text-center"
               />
+              <p className="text-blue-100 mb-1">
+                {employee.title[language]}
+              </p>
+              <p className="text-blue-200 text-sm">
+                {employee.company[language]}
+              </p>
             </div>
 
-            {/* Profile initials circle */}
-            <div className="w-24 h-24 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-white border-opacity-30">
-              <span className="text-5xl font-bold text-white">
-                {getInitials(employee.name)}
-              </span>
-            </div>
-
-            {/* Name and title */}
-            <h1 className="text-xl font-bold text-white mb-2">
-              {employee.name}
-            </h1>
-            <p className="text-blue-100 mb-1">
-              {employee.title[language]}
-            </p>
-            <p className="text-blue-200 text-sm">
-              {employee.company[language]}
-            </p>
-          </div>
-
-          {/* Contact section */}
-          <div className="p-8 space-y-8">
-            {/* Icon grid section - 5 circular buttons */}
-            <div>
-              <div className="grid grid-cols-4 gap-4 justify-items-center">
-                {contactOptions.map((option, index) => (
-                  <IconButton
-                    key={index}
-                    icon={option.icon}
-                    href={option.href}
-                    target={option.target}
-                    rel={option.rel}
-                    onClick={() => handleAction(option.action)}
-                    variant={option.variant}
-                    ariaLabel={option.ariaLabel}
-                  />
-                ))}
+            {/* Contact section */}
+            <div className="p-8 space-y-8">
+              {/* Icon grid section - 4 circular buttons */}
+              <div>
+                <div className="grid grid-cols-4 gap-4 justify-items-center">
+                  {contactOptions.map((option, index) => (
+                    <IconButton
+                      key={index}
+                      icon={option.icon}
+                      href={option.href}
+                      target={option.target}
+                      rel={option.rel}
+                      onClick={() => handleAction(option.action)}
+                      variant={option.variant}
+                      ariaLabel={option.ariaLabel}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Action buttons section */}
-            <div className="mt-6 px-2">
-              <div className="flex flex-row gap-4 justify-center items-center w-full">
-                <ActionButton
-                  href={`/vcf/${employee.slug}.vcf`}
-                  download
-                  onClick={() => handleAction('click_save_contact')}
-                  variant="primary"
-                  className="flex-1 min-w-0"
-                  ariaLabel={`Conectar con ${employee.name}`}
-                >
-                  Conecta conmigo
-                </ActionButton>
-                {employee.calendly && (
+              {/* Action buttons section */}
+              <div className="mt-6 px-2">
+                <div className="flex flex-row gap-4 justify-center items-center w-full">
                   <ActionButton
-                    href={employee.calendly}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => handleAction('click_agendar')}
-                    variant="secondary"
+                    href={`/vcf/${employee.slug}.vcf`}
+                    download
+                    onClick={() => handleAction('click_save_contact')}
+                    variant="primary"
                     className="flex-1 min-w-0"
-                    ariaLabel={`Programar una cita con ${employee.name}`}
+                    ariaLabel={`Conectar con ${employee.name}`}
                   >
-                    Pongamos fecha
+                    Conecta conmigo
                   </ActionButton>
-                )}
+                  {employee.calendly && (
+                    <ActionButton
+                      href={employee.calendly}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => handleAction('click_agendar')}
+                      variant="secondary"
+                      className="flex-1 min-w-0"
+                      ariaLabel={`Programar una cita con ${employee.name}`}
+                    >
+                      Pongamos fecha
+                    </ActionButton>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </FadeContent>
       </div>
     </div>
   );
