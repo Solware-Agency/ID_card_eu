@@ -210,7 +210,7 @@ const ContactCard: React.FC = () => {
               }}
             >
               {/* Header with gradient background */}
-              <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-4 sm:p-6 text-center relative">
+              <div className="bg-gradient-to-br from-blue-600/80 to-blue-800/80 backdrop-blur-sm p-4 sm:p-6 text-center relative border-b border-white/10">
                 {/* Language toggle - top right */}
                 <div className="absolute top-4 right-4">
                   <IconButton
@@ -222,7 +222,7 @@ const ContactCard: React.FC = () => {
                 </div>
 
                 {/* Profile initials circle */}
-                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-white border-opacity-30 overflow-hidden">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-white/40 overflow-hidden shadow-lg">
                   <img 
                     src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Equipo/Eugenio.png"
                     alt={employee.name}
