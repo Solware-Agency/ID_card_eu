@@ -268,20 +268,12 @@ const ContactCard: React.FC = () => {
                     onClick={() => handleAction(option.action)}
                     className="group relative flex flex-col items-center justify-center bg-neutral-800 hover:bg-neutral-700 rounded-full w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110 active:scale-95"
                     aria-label={option.ariaLabel}
-                    title={option.label}
                   >
                     <div className="text-white group-hover:text-white transition-colors duration-200">
                       {React.cloneElement(option.icon as React.ReactElement, {
                         size: 20,
                         className: "sm:w-6 sm:h-6"
                       })}
-                    </div>
-                    
-                    {/* Tooltip */}
-                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-                      <div className="bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
-                        {option.label}
-                      </div>
                     </div>
                   </a>
                 ))}
