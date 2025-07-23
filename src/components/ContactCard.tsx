@@ -269,7 +269,7 @@ const ContactCard: React.FC = () => {
                       target: option.target,
                       rel: option.rel
                     }))}
-                    largeClassName="max-w-lg bg-white/20 backdrop-blur-sm border border-gray-200/30"
+                    largeClassName="max-w-md bg-gray-900/90 backdrop-blur-sm border border-gray-700/50"
                     smallClassName="w-full"
                   />
                 </div>

@@ -43,9 +43,8 @@ const LargeDock = ({
       onMouseMove={(e) => mouseXPosition.set(e.pageX)} // Update mouse X position on mouse move
       onMouseLeave={() => mouseXPosition.set(Infinity)} // Reset on mouse leave
       className={cn(
-        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-white/10 px-4 pb-3 dark:bg-black/10 md:flex", // Large dock styles
+        "mx-auto hidden h-16 items-center gap-6 rounded-2xl bg-white/10 px-6 dark:bg-black/10 md:flex", // Large dock styles
         className,
-        "border border-gray-200/30 backdrop-blur-sm dark:border-gray-800/30",
       )}
     >
       {/* Render each dock icon */}
@@ -83,12 +82,12 @@ function DockIcon({
   });
  
   // Transform properties for width and height based on mouse distance
-  const widthTransform = useTransform(distanceFromMouse, [-150, 0, 150], [40, 80, 40]);
-  const heightTransform = useTransform(distanceFromMouse, [-150, 0, 150], [40, 80, 40]);
+  const widthTransform = useTransform(distanceFromMouse, [-150, 0, 150], [48, 64, 48]);
+  const heightTransform = useTransform(distanceFromMouse, [-150, 0, 150], [48, 64, 48]);
  
   // Transform properties for icon size based on mouse distance
-  const iconWidthTransform = useTransform(distanceFromMouse, [-150, 0, 150], [20, 40, 20]);
-  const iconHeightTransform = useTransform(distanceFromMouse, [-150, 0, 150], [20, 40, 20]);
+  const iconWidthTransform = useTransform(distanceFromMouse, [-150, 0, 150], [24, 32, 24]);
+  const iconHeightTransform = useTransform(distanceFromMouse, [-150, 0, 150], [24, 32, 24]);
  
   // Spring animations for smooth transitions
   const width = useSpring(widthTransform, { mass: 0.1, stiffness: 150, damping: 12 });
@@ -105,7 +104,7 @@ function DockIcon({
         style={{ width, height }} // Set dynamic width and height
         onMouseEnter={() => setIsHovered(true)} // Handle mouse enter
         onMouseLeave={() => setIsHovered(false)} // Handle mouse leave
-        className="relative flex aspect-square items-center justify-center rounded-full bg-white/20 text-black shadow-lg backdrop-blur-md dark:bg-black/20 dark:text-white"
+        className="relative flex aspect-square items-center justify-center rounded-full bg-transparent text-white hover:bg-white/10 transition-colors duration-200"
       >
         <AnimatePresence>
           {/* Tooltip that appears on hover */}
