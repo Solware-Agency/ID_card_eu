@@ -287,7 +287,7 @@ const ContactCard: React.FC = () => {
                     <button className="group relative overflow-hidden rounded-full bg-blue-600 px-8 sm:px-12 py-4 sm:py-5 text-base sm:text-lg transition-all w-full">
                       <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/15 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
                       <span className="font-semibold text-white text-center block leading-tight">Conecta<br />conmigo</span>
-                    </div>
+                    </button>
                   </a>
                   {employee.calendly && (
                     <a
