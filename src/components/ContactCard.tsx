@@ -144,14 +144,6 @@ const ContactCard: React.FC = () => {
       label: 'Correo'
     },
     {
-      icon: <Phone size={24} />,
-      href: `tel:${formatPhoneForCall(employee.phone)}`,
-      action: 'click_call',
-      variant: 'primary' as const,
-      ariaLabel: `Llamar a ${employee.name} al ${employee.phone}`,
-      label: 'Teléfono'
-    },
-    {
       icon: <MessageCircle size={24} />,
       href: `https://wa.me/${employee.whatsapp}`,
       target: '_blank',
@@ -223,7 +215,7 @@ const ContactCard: React.FC = () => {
           <div className="p-8 space-y-8">
             {/* Icon grid section - 5 circular buttons */}
             <div>
-              <div className="grid grid-cols-5 gap-4 justify-items-center">
+              <div className="grid grid-cols-4 gap-4 justify-items-center">
                 {contactOptions.map((option, index) => (
                   <IconButton
                     key={index}
