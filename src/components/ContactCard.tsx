@@ -274,15 +274,22 @@ const ContactCard: React.FC = () => {
               <div className="mt-4 sm:mt-6 px-1 sm:px-2">
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full">
                   <StarBorder
-                    as="button"
-                    className="bg-blue-600 text-white font-bold rounded-xl px-4 sm:px-6 py-3 sm:py-4 shadow-lg w-full sm:flex-1 sm:min-w-0 transition-all duration-300 hover:shadow-xl active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                    as="div"
+                    className="w-full sm:flex-1 sm:min-w-0"
                     color="#2563eb"
                     speed="5s"
-                    onClick={() => handleAction('click_save_contact')}
-                    aria-label={`Conectar con ${employee.name}`}
                   >
-                    <a
+                    <ActionButton
                       href={`/vcf/${employee.slug}.vcf`}
+                      download
+                      onClick={() => handleAction('click_save_contact')}
+                      variant="primary"
+                      className="w-full"
+                      ariaLabel={`Guardar contacto de ${employee.name}`}
+                    >
+                      GUARDAR CONTACTO
+                    </ActionButton>
+                  </StarBorder>
                       download
                       className="block w-full h-full text-center text-sm sm:text-base leading-tight"
                     >
@@ -291,16 +298,23 @@ const ContactCard: React.FC = () => {
                   </StarBorder>
                   {employee.calendly && (
                     <StarBorder
-                      as="button"
-                      className="bg-transparent text-blue-600 font-bold rounded-xl px-4 sm:px-6 py-3 sm:py-4 border-2 border-blue-600 shadow-lg w-full sm:flex-1 sm:min-w-0 transition-all duration-300 hover:shadow-xl active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                      as="div"
+                      className="w-full sm:flex-1 sm:min-w-0"
                       color="#2563eb"
                       speed="5s"
-                      onClick={() => handleAction('click_agendar')}
-                      aria-label={`Programar una cita con ${employee.name}`}
                     >
-                      <a
-                    href={`/vcf/${employee.slug}.vcf`}
+                      <ActionButton
                         href={employee.calendly}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => handleAction('click_schedule')}
+                        variant="secondary"
+                        className="w-full"
+                        ariaLabel={`Programar una cita con ${employee.name}`}
+                      >
+                        AGENDAR REUNIÓN
+                      </ActionButton>
+                    </StarBorder>
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block w-full h-full text-center text-sm sm:text-base leading-tight"
