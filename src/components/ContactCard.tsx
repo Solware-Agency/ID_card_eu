@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Mail, Phone, MessageCircle, Linkedin, Globe, Calendar, Download, Globe2 } from 'lucide-react';
 import BlurText from './BlurText';
 import FadeContent from './FadeContent';
+import StarBorder from './StarBorder';
 import { getEmployeeBySlug } from '../data/empleados';
 import { trackEvent } from '../utils/analytics';
 import type { Language } from '../types';
@@ -272,28 +273,41 @@ const ContactCard: React.FC = () => {
               {/* Action buttons section */}
               <div className="mt-4 sm:mt-6 px-1 sm:px-2">
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full">
-                  <ActionButton
-                    href={`/vcf/${employee.slug}.vcf`}
-                    download
+                  <StarBorder
+                    as="button"
+                    className="bg-blue-600 text-white font-bold rounded-xl px-4 sm:px-6 py-3 sm:py-4 shadow-lg w-full sm:flex-1 sm:min-w-0 transition-all duration-300 hover:shadow-xl active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                    color="#2563eb"
+                    speed="5s"
                     onClick={() => handleAction('click_save_contact')}
-                    variant="primary"
-                    className="w-full sm:flex-1 sm:min-w-0"
-                    ariaLabel={`Conectar con ${employee.name}`}
+                    aria-label={`Conectar con ${employee.name}`}
                   >
-                    Conecta conmigo
-                  </ActionButton>
-                  {employee.calendly && (
-                    <ActionButton
-                      href={employee.calendly}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => handleAction('click_agendar')}
-                      variant="secondary"
-                      className="w-full sm:flex-1 sm:min-w-0"
-                      ariaLabel={`Programar una cita con ${employee.name}`}
+                    <a
+                      href={`/vcf/${employee.slug}.vcf`}
+                      download
+                      className="block w-full h-full text-center text-sm sm:text-base leading-tight"
                     >
-                      Pongamos fecha
-                    </ActionButton>
+                      Conecta conmigo
+                    </a>
+                  </StarBorder>
+                  {employee.calendly && (
+                    <StarBorder
+                      as="button"
+                      className="bg-transparent text-blue-600 font-bold rounded-xl px-4 sm:px-6 py-3 sm:py-4 border-2 border-blue-600 shadow-lg w-full sm:flex-1 sm:min-w-0 transition-all duration-300 hover:shadow-xl active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                      color="#2563eb"
+                      speed="5s"
+                      onClick={() => handleAction('click_agendar')}
+                      aria-label={`Programar una cita con ${employee.name}`}
+                    >
+                      <a
+                    href={`/vcf/${employee.slug}.vcf`}
+                        href={employee.calendly}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full h-full text-center text-sm sm:text-base leading-tight"
+                      >
+                        Pongamos fecha
+                      </a>
+                    </StarBorder>
                   )}
                 </div>
               </div>
