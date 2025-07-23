@@ -23,7 +23,7 @@ const IconButton: React.FC<IconButtonProps> = ({
   variant = 'primary',
   ariaLabel
 }) => {
-  const baseClasses = "w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-md";
+  const baseClasses = "relative w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-md";
   const combinedClasses = `${baseClasses} ${BUTTON_VARIANTS[variant]} ${className}`;
 
   if (href) {
@@ -36,6 +36,8 @@ const IconButton: React.FC<IconButtonProps> = ({
         className={combinedClasses}
         aria-label={ariaLabel}
       >
+        {/* Refuerzo del borde para botones de icono */}
+        <div className="absolute inset-0 rounded-full border border-white/30 pointer-events-none"></div>
         {icon}
       </a>
     );
@@ -43,6 +45,8 @@ const IconButton: React.FC<IconButtonProps> = ({
 
   return (
     <button onClick={onClick} className={combinedClasses} aria-label={ariaLabel}>
+      {/* Refuerzo del borde para botones de icono */}
+      <div className="absolute inset-0 rounded-full border border-white/30 pointer-events-none"></div>
       {icon}
     </button>
   );

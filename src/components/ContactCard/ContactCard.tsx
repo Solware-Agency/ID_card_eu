@@ -41,12 +41,15 @@ const ContactCard: React.FC = () => {
           >
             {/* Glassmorphism card */}
             <div 
-              className="backdrop-blur-2xl bg-white/25 border border-white/18 shadow-2xl"
+              className="backdrop-blur-2xl bg-white/25 border-2 border-white/70 shadow-2xl relative"
               style={{
                 backdropFilter: BLUR_EFFECTS.CARD_BLUR,
                 WebkitBackdropFilter: BLUR_EFFECTS.WEBKIT_BLUR
               }}
             >
+              {/* Refuerzo del borde con pseudo-elemento */}
+              <div className="absolute inset-0 rounded-3xl border-2 border-white/50 pointer-events-none"></div>
+              
               <ContactHeader 
                 employee={employee}
                 language={language}
@@ -54,7 +57,7 @@ const ContactCard: React.FC = () => {
               />
 
               {/* Contact section */}
-              <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8 bg-white/10 backdrop-blur-sm">
+              <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8 bg-white/10 backdrop-blur-sm border-t-2 border-white/40">
                 <ContactIcons employee={employee} />
                 <ContactActions employee={employee} language={language} />
               </div>

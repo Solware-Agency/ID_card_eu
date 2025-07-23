@@ -63,9 +63,11 @@ const ContactIcons: React.FC<ContactIconsProps> = ({ employee }) => {
           target={option.target}
           rel={option.rel}
           onClick={() => handleAction(option.action)}
-          className="group relative flex flex-col items-center justify-center bg-slate-800/60 hover:bg-indigo-600/80 backdrop-blur-sm rounded-full w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-indigo-500/25 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-400/60 focus:ring-offset-2 focus:ring-offset-transparent border border-indigo-400/30 hover:border-indigo-400/40 hover:border-2"
+          className="group relative flex flex-col items-center justify-center bg-slate-800/60 hover:bg-indigo-600/80 backdrop-blur-sm rounded-full w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-indigo-500/25 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-400/60 focus:ring-offset-2 focus:ring-offset-transparent border-2 border-white/50 hover:border-indigo-300/90"
           aria-label={option.ariaLabel}
         >
+          {/* Refuerzo del borde del icono */}
+          <div className="absolute inset-0 rounded-full border border-white/30 pointer-events-none"></div>
           <div className="text-white/90 group-hover:text-white group-hover:drop-shadow-lg transition-all duration-300">
             {React.cloneElement(option.icon as React.ReactElement, {
               size: 20,
