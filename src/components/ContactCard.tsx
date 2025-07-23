@@ -63,7 +63,6 @@ const ContactCard: React.FC = () => {
       success: "bg-green-500 hover:bg-green-600 active:bg-green-700 text-white shadow-md hover:shadow-lg",
       social: "bg-blue-700 hover:bg-blue-800 active:bg-blue-900 text-white shadow-md hover:shadow-lg",
       solware: "bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 active:from-blue-700 active:to-blue-900 text-white shadow-md hover:shadow-lg",
-      solware: "bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 active:from-blue-700 active:to-blue-900 text-white shadow-md hover:shadow-lg",
       language: "bg-white bg-opacity-20 backdrop-blur-sm text-white hover:bg-opacity-30 active:bg-opacity-40 border-0 !w-10 !h-10 !rounded-xl focus:ring-white focus:ring-opacity-50"
     };
 
@@ -203,6 +202,9 @@ const ContactCard: React.FC = () => {
               {/* Profile initials circle */}
               <div className="w-24 h-24 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-white border-opacity-30">
                 <span className="text-5xl font-bold text-white">
+                  {getInitials(employee.name)}
+                </span>
+              </div>
               {/* Name and title */}
               <BlurText
                 text={employee.name}
