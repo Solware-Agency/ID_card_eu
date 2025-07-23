@@ -257,22 +257,34 @@ const ContactCard: React.FC = () => {
 
             {/* Contact section */}
             <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8">
-              {/* Icon grid section - 4 circular buttons */}
-              <div>
-                <div className="relative flex h-20 w-full items-center justify-center">
-                  <AnimatedDock
-                    items={contactOptions.map(option => ({
-                      href: option.href,
-                      icon: option.icon,
-                      title: option.label,
-                      onClick: () => handleAction(option.action),
-                      target: option.target,
-                      rel: option.rel
-                    }))}
-                    largeClassName="max-w-md bg-gray-900/90 backdrop-blur-sm border border-gray-700/50"
-                    smallClassName="w-full"
-                  />
-                </div>
+              {/* Horizontal action buttons section */}
+              <div className="flex justify-center items-center gap-4 my-6">
+                {contactOptions.map((option, index) => (
+                  <a
+                    key={index}
+                    href={option.href}
+                    target={option.target}
+                    rel={option.rel}
+                    onClick={() => handleAction(option.action)}
+                    className="group relative flex flex-col items-center justify-center bg-neutral-800 hover:bg-neutral-700 rounded-full w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110 active:scale-95"
+                    aria-label={option.ariaLabel}
+                    title={option.label}
+                  >
+                    <div className="text-white group-hover:text-white transition-colors duration-200">
+                      {React.cloneElement(option.icon as React.ReactElement, {
+                        size: 20,
+                        className: "sm:w-6 sm:h-6"
+                      })}
+                    </div>
+                    
+                    {/* Tooltip */}
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                      <div className="bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                        {option.label}
+                      </div>
+                    </div>
+                  </a>
+                ))}
               </div>
 
               {/* Action buttons section */}
