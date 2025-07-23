@@ -203,18 +203,18 @@ const ContactCard: React.FC = () => {
             duration={2000} 
             easing="ease-out" 
             initialOpacity={0}
-            className="relative mx-4 sm:mx-0 rounded-3xl overflow-hidden"
+            className="relative mx-4 sm:mx-0"
           >
             {/* Glassmorphism card */}
             <div 
-              className="backdrop-blur-2xl bg-white/25 border border-white/18 shadow-2xl"
+              className="backdrop-blur-2xl bg-white/25 border border-white/18 shadow-2xl rounded-3xl overflow-hidden"
               style={{
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)'
               }}
             >
               {/* Header with gradient background */}
-              <div className="bg-gradient-to-br from-slate-800/90 to-indigo-900/90 backdrop-blur-sm p-4 sm:p-6 text-center relative border-b border-white/10">
+              <div className="bg-gradient-to-br from-slate-800/90 to-indigo-900/90 backdrop-blur-sm p-4 sm:p-6 text-center relative border-b border-white/10 rounded-t-3xl">
                 {/* Language toggle - top right */}
                 <div className="absolute top-4 right-4">
                   <IconButton
@@ -282,7 +282,7 @@ const ContactCard: React.FC = () => {
               </div>
 
               {/* Contact section */}
-              <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8 bg-white/10 backdrop-blur-sm">
+              <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8 bg-white/10 backdrop-blur-sm rounded-b-3xl">
                 {/* Horizontal action buttons section */}
                 <div className="flex justify-center items-center gap-4 my-6">
                   {contactOptions.map((option, index) => (
