@@ -18,7 +18,7 @@ export const empleados: Employee[] = [
     whatsapp: '584142323332',
     linkedin: 'eugenio-andreone',
     website: 'solware.agency',
-    calendly: 'https://calendly.com/eugenio-andreone'
+    calendly: 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ28TbL6x8Jj7yLpzgpH2OQ1MV5t5zdvwYRbjCTVKTjj-pNNzSSZ3mGSpguP7Sv4AksuyRdav2bJ'
   }
 ];
 
