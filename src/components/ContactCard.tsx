@@ -317,7 +317,7 @@ const ContactCard: React.FC = () => {
                     >
                       <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 backdrop-blur-sm border border-indigo-400/50 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-xl hover:shadow-2xl hover:from-indigo-500 hover:to-purple-500">
                         <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/30 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                        <span className="font-bold text-white text-center block leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-200 flex items-center justify-center h-full text-xs sm:text-sm md:text-base">
+                        <span className="font-bold text-white text-center block leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-200 flex items-center justify-center h-full text-sm sm:text-base">
                           Guardar contacto
                         </span>
                       </button>
@@ -331,15 +331,10 @@ const ContactCard: React.FC = () => {
                         className="w-full sm:flex-1 sm:min-w-0 sm:max-w-48"
                         aria-label={`Programar una cita con ${employee.name}`}
                       >
-                        <button className="group relative overflow-hidden rounded-full bg-slate-800/30 backdrop-blur-sm border-2 border-slate-600/40 px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-base transition-all w-full shadow-lg hover:shadow-xl hover:bg-slate-700/40">
+                        <button className="group relative overflow-hidden rounded-full bg-slate-800/30 backdrop-blur-sm border-2 border-slate-600/40 px-6 sm:px-10 py-3 sm:py-4 transition-all w-full shadow-lg hover:shadow-xl hover:bg-slate-700/40">
                           <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-indigo-500/25 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-                          <span className="font-medium text-white/90 group-hover:text-white text-center block leading-tight relative z-10 group-hover:drop-shadow-lg transition-all duration-300 flex items-center justify-center h-full">
-                            <span className="font-bold text-white text-center block leading-snug relative z-10 group-hover:drop-shadow-lg transition-all duration-200 flex items-center justify-center h-full text-xs sm:text-sm md:text-base">
-                              <span className="text-sm sm:text-base md:text-lg leading-tight">
-                                Pongamos<br />
-                                fecha
-                              </span>
-                            </span>
+                          <span className="font-bold text-white text-center block leading-tight relative z-10 group-hover:drop-shadow-lg transition-all duration-200 flex items-center justify-center h-full text-sm sm:text-base">
+                            Pongamos fecha
                           </span>
                         </button>
                       </a>
