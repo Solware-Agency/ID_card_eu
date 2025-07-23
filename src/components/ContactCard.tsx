@@ -207,10 +207,10 @@ const ContactCard: React.FC = () => {
           >
             {/* Glassmorphism card */}
             <div 
-              className="backdrop-blur-xl bg-white/25 border border-white/18 shadow-2xl"
+              className="backdrop-blur-2xl bg-white/25 border border-white/18 shadow-2xl"
               style={{
-                backdropFilter: 'blur(12px)',
-                WebkitBackdropFilter: 'blur(12px)'
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)'
               }}
             >
               {/* Header with gradient background */}
