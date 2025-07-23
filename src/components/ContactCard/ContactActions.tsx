@@ -27,8 +27,8 @@ const ContactActions: React.FC<ContactActionsProps> = ({ employee, language }) =
             <div className="absolute inset-0 rounded-full border border-white/40 pointer-events-none"></div>
             <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/30 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
             <span className="font-bold text-white text-center block leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-200">
-              {language === 'es' ? 'Conecta' : 'Connect'}<br />
-              {language === 'es' ? 'conmigo' : 'with me'}
+              {language === 'es' ? 'Guardar' : 'Save'}<br />
+              {language === 'es' ? 'contacto' : 'contact'}
             </span>
           </button>
         </a>
@@ -47,8 +47,8 @@ const ContactActions: React.FC<ContactActionsProps> = ({ employee, language }) =
               <div className="absolute inset-0 rounded-full border border-white/30 pointer-events-none"></div>
               <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-indigo-500/25 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
               <span className="font-medium text-white/90 group-hover:text-white text-center block leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-300">
-                {language === 'es' ? 'Agendar' : 'Schedule'}<br />
-                {language === 'es' ? 'reunión' : 'meeting'}
+                {language === 'es' ? 'Pongamos' : 'Let\'s set'}<br />
+                {language === 'es' ? 'fecha' : 'a date'}
               </span>
             </button>
           </a>
