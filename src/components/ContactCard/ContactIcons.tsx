@@ -1,8 +1,8 @@
 import React from 'react';
-import { Mail, MessageCircle, Linkedin } from 'lucide-react';
-import { IMAGES } from '../../constants';
 import { trackEvent } from '../../utils/analytics';
-import type { Employee, ContactOption } from '../../types';
+import { getContactOptions } from '../../utils/contactOptions';
+import { ELEMENT_STYLES } from '../../constants';
+import type { Employee } from '../../types';
 
 interface ContactIconsProps {
   employee: Employee;
@@ -13,46 +13,7 @@ const ContactIcons: React.FC<ContactIconsProps> = ({ employee }) => {
     trackEvent(action, employee.name);
   };
 
-  const contactOptions: ContactOption[] = [
-    {
-      icon: <Mail size={24} />,
-      href: `mailto:${employee.email}`,
-      action: 'click_email',
-      variant: 'primary',
-      ariaLabel: `Enviar correo electrónico a ${employee.name}`,
-      label: 'Correo'
-    },
-    {
-      icon: <MessageCircle size={24} />,
-      href: `https://wa.me/${employee.whatsapp}`,
-      target: '_blank',
-      rel: 'noopener noreferrer',
-      action: 'click_whatsapp',
-      variant: 'success',
-      ariaLabel: `Enviar mensaje de WhatsApp a ${employee.name}`,
-      label: 'WhatsApp'
-    },
-    ...(employee.linkedin ? [{
-      icon: <Linkedin size={24} />,
-      href: `https://linkedin.com/in/${employee.linkedin}`,
-      target: '_blank',
-      rel: 'noopener noreferrer',
-      action: 'click_social',
-      variant: 'social' as const,
-      ariaLabel: `Ver perfil de LinkedIn de ${employee.name}`,
-      label: 'LinkedIn'
-    }] : []),
-    ...(employee.website ? [{
-      icon: <img src={IMAGES.SOLWARE_LOGO} alt="Solware" className="w-8 h-8" />,
-      href: `https://${employee.website}`,
-      target: '_blank',
-      rel: 'noopener noreferrer',
-      action: 'click_social',
-      variant: 'solware' as const,
-      ariaLabel: `Visitar sitio web de ${employee.company.es}`,
-      label: 'Solware'
-    }] : []),
-  ];
+  const contactOptions = getContactOptions(employee);
 
   return (
     <div className="flex justify-center items-center gap-4 my-6">
@@ -63,10 +24,14 @@ const ContactIcons: React.FC<ContactIconsProps> = ({ employee }) => {
           target={option.target}
           rel={option.rel}
           onClick={() => handleAction(option.action)}
-          className="group relative flex flex-col items-center justify-center bg-slate-800/60 hover:bg-indigo-600/80 backdrop-blur-sm rounded-full w-12 h-12 sm:w-14 sm:h-14 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/25 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-400/60 focus:ring-offset-2 focus:ring-offset-transparent"
-          style={{
-            boxShadow: 'inset 0 0 0 2px rgba(255, 255, 255, 0.7), 0 10px 15px -3px rgba(0, 0, 0, 0.1)'
-          }}
+          className={`
+            group relative flex flex-col items-center justify-center 
+            ${ELEMENT_STYLES.contactIcon.base} ${ELEMENT_STYLES.contactIcon.size}
+            transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/25 
+            hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 
+            focus:ring-indigo-400/60 focus:ring-offset-2 focus:ring-offset-transparent
+          `}
+          style={{ boxShadow: ELEMENT_STYLES.contactIcon.boxShadow }}
           aria-label={option.ariaLabel}
         >
           <div className="text-white/90 group-hover:text-white group-hover:drop-shadow-lg transition-all duration-300">

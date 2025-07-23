@@ -1,5 +1,5 @@
 import React from 'react';
-import { BUTTON_VARIANTS } from '../../constants';
+import { BUTTON_STYLES } from '../../constants';
 import type { ButtonVariant } from '../../types';
 
 interface IconButtonProps {
@@ -23,47 +23,31 @@ const IconButton: React.FC<IconButtonProps> = ({
   variant = 'primary',
   ariaLabel
 }) => {
-  const baseClasses = "relative w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-md";
-  const combinedClasses = `${baseClasses} ${className}`;
-  
-  const getBoxShadow = (variant: ButtonVariant) => {
-    const shadows = {
-      primary: 'inset 0 0 0 2px rgba(255, 255, 255, 0.8), 0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-      secondary: 'inset 0 0 0 2px rgba(37, 99, 235, 1), 0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-      success: 'inset 0 0 0 2px rgba(255, 255, 255, 0.8), 0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-      social: 'inset 0 0 0 2px rgba(255, 255, 255, 0.8), 0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-      solware: 'inset 0 0 0 2px rgba(255, 255, 255, 0.8), 0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-      language: 'inset 0 0 0 2px rgba(255, 255, 255, 0.5), 0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-    };
-    return shadows[variant];
+  const baseClasses = `
+    relative w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center 
+    transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95 
+    focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-md ${className}
+  `.trim();
+
+  const buttonStyle = BUTTON_STYLES[variant];
+  const combinedClasses = `${baseClasses} ${buttonStyle.base}`;
+
+  const buttonProps = {
+    className: combinedClasses,
+    style: { boxShadow: buttonStyle.boxShadow },
+    'aria-label': ariaLabel,
+    onClick
   };
 
   if (href) {
     return (
-      <a
-        href={href}
-        target={target}
-        rel={rel}
-        onClick={onClick}
-        className={`${combinedClasses} ${BUTTON_VARIANTS[variant]}`}
-        style={{ boxShadow: getBoxShadow(variant) }}
-        aria-label={ariaLabel}
-      >
+      <a href={href} target={target} rel={rel} {...buttonProps}>
         {icon}
       </a>
     );
   }
 
-  return (
-    <button 
-      onClick={onClick} 
-      className={`${combinedClasses} ${BUTTON_VARIANTS[variant]}`}
-      style={{ boxShadow: getBoxShadow(variant) }}
-      aria-label={ariaLabel}
-    >
-      {icon}
-    </button>
-  );
+  return <button {...buttonProps}>{icon}</button>;
 };
 
 export default IconButton;

@@ -35,3 +35,17 @@ export interface ContactOption {
 }
 
 export type ButtonVariant = 'primary' | 'secondary' | 'success' | 'social' | 'language' | 'solware';
+
+export interface AnimationConfig {
+  delay: number;
+  duration: number;
+  easing: string;
+  threshold: number;
+}
+
+export interface StyleConfig {
+  borderWidth: string;
+  borderColor: string;
+  borderRadius: string;
+  boxShadow: string;
+}
