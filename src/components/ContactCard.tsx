@@ -13,7 +13,8 @@ import type { Language } from '../types';
 const ContactCard: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [language, setLanguage] = useState<Language['code']>('es');
-  const employee = slug ? getEmployeeBySlug(slug) : null;
+  // Si no hay slug, usar 'eugenio-andreone' por defecto
+  const employee = getEmployeeBySlug(slug || 'eugenio-andreone');
 
   useEffect(() => {
     if (employee) {
