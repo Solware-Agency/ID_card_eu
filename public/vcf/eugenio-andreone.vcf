@@ -1,9 +1,10 @@
 BEGIN:VCARD
 VERSION:3.0
 FN:Eugenio Andreone
+N:Andreone;Eugenio;;;
 ORG:Agencia Solware
 TITLE:Ingeniero de Producción
+TEL;TYPE=CELL:+58 414 2323332
 EMAIL:ventas@solware.agency
-TEL:+58 414 2323332
 URL:https://solware.agency
 END:VCARD
