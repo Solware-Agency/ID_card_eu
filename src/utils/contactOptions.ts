@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, MessageCircle, Linkedin } from 'lucide-react';
+import { Mail, Linkedin } from 'lucide-react';
 import { IMAGES } from '../constants';
 import type { Employee, ContactOption } from '../types';
 
@@ -11,16 +11,6 @@ export const getContactOptions = (employee: Employee): ContactOption[] => [
     variant: 'primary',
     ariaLabel: `Enviar correo electrónico a ${employee.name}`,
     label: 'Correo'
-  },
-  {
-    icon: <MessageCircle size={24} />,
-    href: `https://wa.me/${employee.whatsapp}`,
-    target: '_blank',
-    rel: 'noopener noreferrer',
-    action: 'click_whatsapp',
-    variant: 'success',
-    ariaLabel: `Enviar mensaje de WhatsApp a ${employee.name}`,
-    label: 'WhatsApp'
   },
   ...(employee.linkedin ? [{
     icon: <Linkedin size={24} />,

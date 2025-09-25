@@ -39,7 +39,7 @@ const ContactActions: React.FC<ContactActionsProps> = ({ employee, language }) =
     const content = (
       <>
         <span className="absolute bottom-0 left-0 h-48 w-full origin-bottom translate-y-full transform overflow-hidden rounded-full bg-white/30 transition-all duration-300 ease-out group-hover:translate-y-14"></span>
-        <span className="font-bold text-white text-center block leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-200">
+        <span className="font-bold text-white text-center flex items-center justify-center leading-tight mx-auto relative z-10 group-hover:drop-shadow-lg transition-all duration-200">
           {children}
         </span>
       </>
@@ -60,13 +60,14 @@ const ContactActions: React.FC<ContactActionsProps> = ({ employee, language }) =
     <div className="mt-4 sm:mt-6 px-1 sm:px-2">
       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full">
         <ActionButton
-          href={`/vcf/${employee.slug}.vcf`}
-          download
-          onClick={() => handleAction('click_save_contact')}
-          ariaLabel={`Guardar contacto de ${employee.name}`}
+          href={`https://wa.me/${employee.whatsapp}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => handleAction('click_whatsapp')}
+          ariaLabel={`Enviar mensaje de WhatsApp a ${employee.name}`}
           variant="primary"
         >
-          Guardar contacto
+          {TEXT_CONTENT[language].whatsapp}
         </ActionButton>
         
         {employee.calendly && (

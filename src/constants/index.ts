@@ -24,6 +24,7 @@ export const VISUAL_EFFECTS = {
 
 // Image URLs
 export const IMAGES = {
+  EMPLOYEE_PHOTO: 'https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Equipo/Jesus.png',
   SOLWARE_LOGO: 'https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Logos/Svg/Logo_Blanco_Solware.svg',
 } as const;
 
@@ -98,14 +99,14 @@ export const ELEMENT_STYLES = {
 // Text content
 export const TEXT_CONTENT = {
   es: {
-    saveContact: 'Guardar contacto',
+    whatsapp: 'WhatsApp',
     scheduleMeeting: 'Pongamos fecha',
     notFound: 'Contacto no encontrado',
     notFoundDesc: 'El perfil solicitado no existe.',
     languageToggle: 'Cambiar idioma'
   },
   en: {
-    saveContact: 'Save contact',
+    whatsapp: 'WhatsApp',
     scheduleMeeting: 'Schedule meeting',
     notFound: 'Contact not found',
     notFoundDesc: 'The requested profile does not exist.',

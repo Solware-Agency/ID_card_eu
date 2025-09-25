@@ -16,7 +16,7 @@ export const empleados: Employee[] = [
     email: 'ventas@solware.agency',
     phone: '+58 414 2323332',
     whatsapp: '584142323332',
-    linkedin: 'eugenio-andreone',
+    linkedin: 'https://linkedin.com/in/eugenio-andreone',
     website: 'solware.agency',
     calendly: 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ28TbL6x8Jj7yLpzgpH2OQ1MV5t5zdvwYRbjCTVKTjj-pNNzSSZ3mGSpguP7Sv4AksuyRdav2bJ'
   }

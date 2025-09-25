@@ -3,7 +3,7 @@ import { Globe2 } from 'lucide-react';
 import BlurText from '../BlurText';
 import IconButton from '../ui/IconButton';
 import GlassCard from '../ui/GlassCard';
-import { ANIMATION_CONFIG, ELEMENT_STYLES, TEXT_CONTENT } from '../../constants';
+import { IMAGES, ANIMATION_CONFIG, ELEMENT_STYLES, TEXT_CONTENT } from '../../constants';
 import type { Employee, Language } from '../../types';
 
 interface ContactHeaderProps {
@@ -17,15 +17,6 @@ const ContactHeader: React.FC<ContactHeaderProps> = ({
   language,
   onLanguageToggle
 }) => {
-  const getInitials = (name: string) => {
-    return name
-      .split(' ')
-      .map(word => word.charAt(0))
-      .join('')
-      .toUpperCase()
-      .slice(0, 2);
-  };
-
   return (
     <GlassCard variant="header" className="p-4 sm:p-6 text-center relative">
       <div className="absolute top-4 right-4">
@@ -42,20 +33,10 @@ const ContactHeader: React.FC<ContactHeaderProps> = ({
         style={{ boxShadow: ELEMENT_STYLES.avatar.boxShadow }}
       >
         <img 
-          src={employee.photo} 
+          src={employee.photo}
           alt={employee.name}
           className="w-full h-full object-cover"
-          onError={(e) => {
-            // Fallback to initials if image fails to load
-            const target = e.target as HTMLImageElement;
-            target.style.display = 'none';
-            const fallback = target.nextElementSibling as HTMLElement;
-            if (fallback) fallback.style.display = 'flex';
-          }}
         />
-        <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-xl font-bold" style={{ display: 'none' }}>
-          {getInitials(employee.name)}
-        </div>
       </div>
 
       <div className="text-center w-full flex justify-center">
